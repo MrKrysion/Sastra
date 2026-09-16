@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Documentation
+    url: https://www.sastra.dev/docs/
+    about: How to use every feature of the engine.
+  - name: Sastra Compressor
+    url: https://github.com/MrKrysion/Sastra-Compressor/issues
+    about: Report issues with the compressor there.

@@ -1,0 +1,18 @@
+chapter: "Sample Chapter"
+
+characters:
+
+  character:
+    name: "Character"
+    color: "#b29bff"
+    avatar: "avatars/avatar.webp"
+
+script:
+
+  - bg: "backgrounds/background.webp"
+
+  - character: "Welcome to Sastra!"
+
+  - narration: |
+      Start writing your own chapters.
+      See Sastra's Documentation to get started.
