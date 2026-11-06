@@ -1,7 +1,7 @@
 /*
 SPDX-License-Identifier: GPL-3.0-or-later WITH LicenseRef-Sastra-Asset-Exception
 
-Sastra™ Visual Novel Engine — Analytics Plugin 2.0.0
+Sastra™ Visual Novel Engine — Analytics Plugin
 
 Copyright (c) 2026 Ken "Krysion" Nisaka (https://www.krysion.com)
 
@@ -229,6 +229,11 @@ You should have received a copy of the GNU General Public License along with thi
 
 	SASTRA.plugin({
 		name: 'analytics',
+		title: 'Google Analytics',
+		version: '2.0.1',
+		description: 'See how players find and play your game, with Google Analytics.',
+		author: 'Ken Nisaka',
+		url: 'https://www.sastra.dev/docs/#analytics',
 		requires: '2.0',
 		setup(api) {
 			overlay = api.overlay();
