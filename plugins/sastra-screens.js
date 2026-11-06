@@ -1,7 +1,7 @@
 /*
 SPDX-License-Identifier: GPL-3.0-or-later WITH LicenseRef-Sastra-Asset-Exception
 
-Sastra™ Visual Novel Engine — Screens Plugin 1.1.0
+Sastra™ Visual Novel Engine — Screens Plugin
 
 Copyright (c) 2026 Ken "Krysion" Nisaka (https://www.krysion.com)
 
@@ -109,6 +109,11 @@ You should have received a copy of the GNU General Public License along with thi
 
 	SASTRA.plugin({
 		name: 'screens',
+		title: 'Interactive Screens',
+		version: '1.1.1',
+		description: 'Hand the story over to an interactive page for a moment: a phone or computer desktop to explore, a puzzle, a minigame.',
+		author: 'Ken Nisaka',
+		url: 'https://www.sastra.dev/docs/#screens',
 		requires: '2.0',
 
 		setup(sastra) {
