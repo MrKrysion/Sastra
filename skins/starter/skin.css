@@ -1,0 +1,33 @@
+/*
+  Starter skin for Sastra 2.0.
+  Copy this folder, rename it, and change what you like. Everything here is
+  commented out or set to the engine's own value, so it changes nothing until you
+  edit it. The full list of variables, classes and markers is in the skin guide:
+  https://www.sastra.dev/docs/#skins
+*/
+
+/* Variables: the quickest way to restyle. */
+:root {
+	/* Shape */
+	/* --r-pill: 999px;   buttons and pills */
+	/* --r-card: 24px;    cards and panels */
+	/* --r-modal: 28px;   pop-up windows */
+
+	/* The dark pills over the game: top-bar buttons and chapter tiles. */
+	/* --chrome-bg: rgba(10, 10, 11, .66); */
+	/* --chrome-hover: rgba(36, 36, 40, .84); */
+
+	/* The writer's theme colours (accent, text, pageBackground, ...) win over these, so
+	   leave --color-* alone unless the skin is only for your own game. */
+}
+
+/* Dialogue */
+/* .dialogue-content { } */
+/* .character-name { } */
+
+/* React to who is speaking or what is on screen. */
+/* [data-speaker="character"] .character-name { } */
+/* body[data-scene="narration"] .narration-text { } */
+
+/* Swap an icon for your own shape (one-colour SVGs work best). */
+/* [data-icon="play"] { --icon: url(icons/play.svg); } */

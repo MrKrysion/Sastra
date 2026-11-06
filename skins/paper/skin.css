@@ -1,0 +1,431 @@
+/*
+  Paper, a skin for Sastra 2.0.
+  A printed novel: warm paper, serif type, a table of contents, and turned-down corners.
+  Its colours and settings are listed in README.md.
+*/
+
+:root {
+	--stock-hi: color-mix(in srgb, var(--color-dialogue-bg) 45%, #fff);
+	--stock-deep: color-mix(in srgb, var(--color-dialogue-bg) 92%, var(--color-text));
+	--grain: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/><feColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .15 0 0 0 .1 0'/></filter><rect width='240' height='240' filter='url(%23g)'/></svg>");
+
+	--font-body: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+
+	--color-accent: #8c2a22;
+	--color-on-accent: #fbf5e9;
+	--color-text: #2b2118;
+	--color-muted-text: #76644f;
+	--color-page-bg: #f4ecdc;
+	--color-panel-bg: #f4ecdc;
+	--color-dialogue-bg: #f4ecdc;
+	--color-success: #4c6b3a;
+	--color-error: #8c2a22;
+
+	--ink-2: color-mix(in srgb, var(--color-text) 85%, var(--color-page-bg));
+	--soft: color-mix(in srgb, var(--color-text) 6%, transparent);
+	--soft-2: color-mix(in srgb, var(--color-text) 12%, transparent);
+	--line: color-mix(in srgb, var(--color-text) 22%, transparent);
+	--chrome-bg: var(--color-panel-bg);
+	--chrome-hover: var(--stock-hi);
+	--art-surface: transparent;
+	--art-surface-hover: var(--soft-2);
+	--dim: color-mix(in srgb, var(--color-page-bg) 90%, transparent);
+	--backdrop: color-mix(in srgb, var(--color-text) 50%, transparent);
+	--tip-bg: var(--color-text);
+	--tip-fg: var(--color-page-bg);
+
+	--r-pill: 2px;
+	--r-modal: 2px;
+	--r-card: 2px;
+	--r-menu: 2px;
+	--r-pop: 2px;
+	--r-row: 2px;
+	--r-tip: 2px;
+
+	--bar-edge: 0px;
+	--bar-gap: 6px;
+	--shadow-sm: 0 2px 6px color-mix(in srgb, var(--color-text) 28%, transparent);
+	--shadow-md: 0 10px 28px color-mix(in srgb, var(--color-text) 32%, transparent);
+	--shadow-lg: 0 18px 50px color-mix(in srgb, var(--color-text) 42%, transparent);
+
+	--dialogue-position-top: max(calc(var(--bar) + 16px), 7%);
+}
+
+/* --menu-fade is the scrim over the menu art: here a sheet covers that side instead. */
+.chapter-select { --menu-fade: none; }
+
+body[data-skin-paper-grain="false"] { --grain: none; }
+
+/* Dialogue: a slip of paper with one corner turned down. */
+.dialogue-content,
+.conv-dialogue-box,
+.narration-screen {
+	background: var(--grain), var(--color-dialogue-bg);
+	border-radius: 2px;
+	color: var(--color-text);
+	box-shadow: 0 1px 0 var(--stock-hi) inset, 0 calc(14 * var(--scene-px)) calc(34 * var(--scene-px)) rgba(30, 20, 10, .42);
+	padding: calc(32 * var(--scene-px)) calc(44 * var(--scene-px));
+	contain: layout;
+}
+
+.dialogue-content,
+.conv-dialogue-box { position: relative; }
+
+.dialogue-content::after,
+.conv-dialogue-box::after {
+	content: '';
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: calc(30 * var(--scene-px));
+	height: calc(30 * var(--scene-px));
+	background: linear-gradient(315deg, var(--stock-hi) 0 42%, var(--stock-deep) 50%, color-mix(in srgb, var(--color-text) 35%, transparent) 50%, transparent 72%);
+	pointer-events: none;
+}
+
+/* Keeps both avatars on screen on a phone held sideways. */
+.conv-dialogue-box { max-width: min(calc(640 * var(--scene-px)), 100vw - calc(390 * var(--scene-px))); }
+
+/* -webkit-text-fill-color keeps the name in ink, and color stays free for the rule. */
+.character-name {
+	align-self: flex-start;
+	font-size: calc(19 * var(--scene-px));
+	font-variant: small-caps;
+	font-weight: 600;
+	letter-spacing: .09em;
+	-webkit-text-fill-color: var(--color-text);
+	padding-bottom: calc(5 * var(--scene-px));
+	border-bottom: calc(2 * var(--scene-px)) solid color-mix(in srgb, currentColor 72%, var(--color-text));
+	margin-bottom: calc(14 * var(--scene-px));
+}
+
+.dialogue-text {
+	font-size: calc(22 * var(--scene-px));
+	line-height: 1.55;
+}
+
+/* Narration: the page of the novel itself. */
+.narration-screen {
+	padding: calc(54 * var(--scene-px)) calc(64 * var(--scene-px)) calc(48 * var(--scene-px));
+	outline: 1px solid color-mix(in srgb, var(--color-text) 25%, transparent);
+	outline-offset: calc(-12 * var(--scene-px));
+}
+
+.narration-screen::before {
+	content: '\2766';
+	display: block;
+	margin-bottom: calc(14 * var(--scene-px));
+	font-size: calc(24 * var(--scene-px));
+	line-height: 1;
+	color: var(--color-accent);
+}
+
+.narration-text {
+	font-size: calc(24 * var(--scene-px));
+	font-style: italic;
+	line-height: 1.6;
+}
+
+/* Avatars: plates tipped into the book, slightly crooked. */
+.avatar,
+.conv-avatar {
+	border-radius: 0;
+	padding: calc(8 * var(--scene-px));
+	background: var(--stock-hi);
+	box-shadow: 0 calc(8 * var(--scene-px)) calc(22 * var(--scene-px)) rgba(30, 20, 10, .45);
+	rotate: -1.5deg;
+}
+
+.conv-avatar:last-child { rotate: 1.5deg; }
+
+.conv-avatar.dimmed {
+	opacity: .9;
+	filter: grayscale(1) sepia(.35) contrast(.9);
+}
+
+body[data-skin-crooked-plates="false"] :is(.avatar, .conv-avatar) { rotate: none; }
+
+/* The top bar: tabs hanging from the top edge. */
+.control-button,
+.chapter-info {
+	color: var(--color-text);
+	font-weight: 600;
+	font-style: italic;
+	box-shadow: var(--shadow-sm);
+	border-radius: 0 0 2px 2px;
+}
+
+.chapter-info {
+	font-size: .92rem;
+	font-variant: small-caps;
+	letter-spacing: .06em;
+	left: 24px;
+}
+
+.top-controls { right: 24px; }
+
+@media (hover: hover) {
+	.control-button:not(.active):hover { color: var(--color-accent); }
+}
+
+/* Chapter menu: the left page of an open book, with the gutter's shadow on its edge. */
+.chapter-select-content {
+	background:
+		linear-gradient(270deg, color-mix(in srgb, var(--color-text) 30%, transparent), color-mix(in srgb, var(--color-text) 8%, transparent) 14px, transparent 54px),
+		var(--grain),
+		var(--color-page-bg);
+	color: var(--color-text);
+	box-shadow: 14px 0 36px rgba(20, 12, 5, .4);
+	counter-reset: chapter;
+}
+
+.menu-title {
+	font-style: italic;
+	font-weight: 500;
+	letter-spacing: -.01em;
+}
+
+.menu-author {
+	font-size: 1.05em;
+	font-variant: small-caps;
+	font-weight: 500;
+	letter-spacing: .08em;
+	color: var(--color-muted-text);
+}
+
+.menu-synopsis {
+	padding-top: .8em;
+	border-top: 1px solid var(--line);
+	font-style: italic;
+	color: var(--ink-2);
+}
+
+.chapter-buttons {
+	gap: 0;
+	border-top: 3px double var(--line);
+	border-bottom: 3px double var(--line);
+	padding-block: .35em;
+}
+
+/* Contents page: a roman numeral, the chapter name, then dot leaders to the progress. */
+.chapter-button,
+.chapter-button:not(:has(.chapter-progress)) {
+	counter-increment: chapter;
+	grid-template-columns: 2.6em minmax(0, auto) minmax(1.5em, 1fr) auto;
+	min-height: 2.5em;
+	padding: .2em .4em;
+	column-gap: 0;
+	border-radius: 0;
+	background: transparent;
+	color: var(--color-text);
+}
+
+.chapter-button::before {
+	content: counter(chapter, upper-roman) '.';
+	grid-column: 1;
+	grid-row: 1;
+	font-variant: small-caps;
+	color: var(--color-muted-text);
+}
+
+.chapter-button::after {
+	content: '';
+	grid-column: 3;
+	grid-row: 1;
+	align-self: end;
+	margin: 0 .5em .55em;
+	border-bottom: 2px dotted color-mix(in srgb, var(--color-text) 40%, transparent);
+}
+
+.chapter-button .row-title {
+	grid-column: 2;
+	grid-row: 1;
+	font-weight: 500;
+	font-size: 1.05em;
+}
+
+.chapter-button .row-meta,
+.chapter-button:has(.chapter-progress) .row-meta {
+	grid-column: 4;
+	grid-row: 1;
+	font-style: italic;
+	color: var(--color-accent);
+}
+
+.chapter-progress { display: none; }
+
+@media (hover: hover) {
+	.chapter-button:hover {
+		background: var(--soft);
+		transform: none;
+	}
+	.chapter-button:hover .row-title { color: var(--color-accent); }
+}
+
+/* Buttons: letterpress. */
+.ui-button {
+	font-variant: small-caps;
+	font-weight: 600;
+	letter-spacing: .08em;
+	box-shadow: 0 1px 2px color-mix(in srgb, var(--color-text) 30%, transparent);
+}
+
+.ui-button.secondary:not(.copied, .copy-failed) {
+	background: transparent;
+	border-color: var(--line);
+	box-shadow: none;
+}
+
+.close-button,
+.mute-toggle {
+	border-radius: 2px;
+	background: transparent;
+}
+
+.row-title { font-weight: 500; }
+
+/* Pop-ups, log, and credits read as pages. */
+.modal-content,
+.volume-panel,
+.autoplay-panel,
+.more-panel {
+	background: var(--grain), var(--color-panel-bg);
+}
+
+.modal-head { border-bottom: 3px double var(--line); }
+
+.modal-title {
+	font-style: italic;
+	font-weight: 500;
+}
+
+.modal-body { padding-top: 16px; }
+.modal-foot { background: transparent; }
+
+.log-entry { border-bottom: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent); }
+
+.log-entry .character-name {
+	border: 0;
+	padding: 0;
+	margin-bottom: 2px;
+	font-size: 1rem;
+}
+
+.log-entry.narration .text { font-style: italic; }
+
+.log-avatar { border-radius: 0; }
+
+.slider-wave { display: none; }
+
+/* The engine clears the fill while the wave is drawn, and this skin has no wave. */
+.slider { --fill-color: var(--color-accent) !important; }
+
+.slider.held { --track: 6px; --thumb: 20px; }
+
+.slider::-webkit-slider-thumb {
+	border-radius: 2px;
+	width: 12px;
+	background: var(--color-text);
+}
+
+.slider::-moz-range-thumb {
+	border-radius: 2px;
+	width: 12px;
+	background: var(--color-text);
+}
+
+.slider-ticks span { border-radius: 0; }
+
+.switch { border-radius: 2px; }
+.switch::after { border-radius: 1px; }
+
+/* Start, title, and end screens: a chapter opening. */
+.start-gate { background: var(--grain), var(--color-page-bg); }
+
+.start-title,
+.start-gate:not(.start-gate--resume) .start-title {
+	font-style: italic;
+	font-weight: 500;
+}
+
+.start-title::after {
+	content: '\2766';
+	display: block;
+	margin-top: 12px;
+	font-size: 1.1rem;
+	font-style: normal;
+	color: var(--color-accent);
+}
+
+.screen-title {
+	color: var(--color-text);
+	font-style: italic;
+	font-weight: 500;
+	letter-spacing: -.01em;
+}
+
+.screen-subtitle {
+	color: var(--color-muted-text);
+	font-variant: small-caps;
+	letter-spacing: .1em;
+}
+
+.screen-subtitle::before {
+	content: '\2014\2002\2766\2002\2014';
+	display: block;
+	margin-bottom: 14px;
+	font-size: .8em;
+	color: var(--color-accent);
+}
+
+/* Without the dim the words sit on the art, so they get a soft paper halo. */
+.full-screen-overlay--no-dim :is(.screen-title, .screen-subtitle) {
+	text-shadow: 0 0 2px var(--color-page-bg), 0 0 14px var(--color-page-bg), 0 0 28px var(--color-page-bg);
+}
+
+/* Pause menu: the whole screen becomes the page. */
+.pause-menu {
+	background: var(--grain), var(--color-page-bg);
+	backdrop-filter: none;
+	-webkit-backdrop-filter: none;
+}
+
+.pause-chapter {
+	font-style: italic;
+	font-weight: 500;
+}
+
+.pause-right {
+	border-left: 3px double var(--line);
+	border-radius: 0;
+}
+
+.pause-menu .eyebrow {
+	font-variant: small-caps;
+	letter-spacing: .08em;
+	font-size: 1rem;
+	font-weight: 500;
+}
+
+/* Notifications and tooltips. The bar touches the edge, so the toasts need their own inset. */
+.toast-stack--left { left: 24px; }
+.toast-stack--right { right: 24px; }
+
+.toast {
+	background: var(--color-text);
+	color: var(--color-page-bg);
+	font-style: italic;
+	font-weight: 500;
+}
+
+.tooltip { font-style: italic; font-weight: 500; }
+
+@media (max-height: 520px) {
+	.character-name { margin-bottom: calc(8 * var(--scene-px)); }
+	.chapter-info { left: 12px; }
+	.top-controls { right: 12px; }
+}
+
+@media (max-width: 600px) and (orientation: portrait) {
+	.chapter-select-content { box-shadow: none; }
+}

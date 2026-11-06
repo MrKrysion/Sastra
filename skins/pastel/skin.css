@@ -1,0 +1,465 @@
+/*
+  Pastel, a skin for Sastra 2.0.
+  Candy colours, sticker avatars, washi tape, and buttons you can squish.
+  Its colours and settings are listed in README.md.
+*/
+
+:root {
+	--color-mint: #bdf0dc;
+	--color-lemon: #fff0a8;
+	--color-lilac: #d9c8ff;
+	--color-sky: #bfe4ff;
+	--pink: color-mix(in srgb, var(--color-accent) 40%, #fff);
+	--edge: color-mix(in srgb, var(--color-accent) 45%, #d9c8e8);
+	--headline: color-mix(in srgb, var(--color-accent) 88%, #000);
+	--press: color-mix(in srgb, var(--color-accent) 78%, #000);
+	--press-2: color-mix(in srgb, var(--color-lilac) 78%, #000);
+
+	--font-body: ui-rounded, "SF Pro Rounded", "Hiragino Maru Gothic ProN", "Nunito", "Quicksand", "Segoe UI", "Trebuchet MS", sans-serif;
+
+	--color-accent: #ff6da5;
+	--color-on-accent: #3d2146;
+	--color-text: #4b3560;
+	--color-muted-text: #80699a;
+	--color-page-bg: color-mix(in srgb, var(--color-accent) 14%, #fff);
+	--color-panel-bg: #fffaf5;
+	--color-dialogue-bg: #fffaf5;
+	--color-success: #7fe0b8;
+	--color-error: #ff8f8f;
+
+	--accent-hover: color-mix(in srgb, var(--color-accent) 84%, #fff);
+	--ink-2: color-mix(in srgb, var(--color-text) 85%, #fff);
+	--soft: rgba(217, 200, 255, .34);
+	--soft-2: rgba(217, 200, 255, .62);
+	--line: color-mix(in srgb, var(--color-accent) 18%, #fff);
+	--chrome-bg: var(--color-panel-bg);
+	--chrome-hover: #fff;
+	--art-surface: var(--color-panel-bg);
+	--art-surface-hover: #fff;
+	--dim: color-mix(in srgb, var(--pink) 72%, transparent);
+	--backdrop: rgba(120, 85, 160, .42);
+	--tip-bg: var(--color-text);
+	--tip-fg: var(--color-panel-bg);
+
+	--r-modal: 30px;
+	--r-card: 30px;
+	--r-menu: 26px;
+	--r-pop: 24px;
+	--r-row: 18px;
+	--r-tip: 12px;
+
+	--shadow-sm: 0 3px 0 var(--edge), 0 8px 16px rgba(120, 85, 160, .22);
+	--shadow-md: 0 5px 0 var(--edge), 0 16px 34px rgba(120, 85, 160, .28);
+	--shadow-lg: 0 7px 0 var(--edge), 0 24px 50px rgba(120, 85, 160, .34);
+
+	--dots: radial-gradient(circle, rgba(255, 255, 255, .85) 3px, transparent 3.5px) 0 0 / 26px 26px;
+	--tape: repeating-linear-gradient(45deg, var(--color-mint) 0 8px, #d9f8ec 8px 16px);
+	--heart: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 21C5 15.5 2 12 2 8a5.2 5.2 0 0 1 10-2 5.2 5.2 0 0 1 10 2c0 4-3 7.5-10 13z' fill='%23ff6da5' stroke='white' stroke-width='2'/></svg>");
+}
+
+.chapter-select { --menu-fade: none; }
+
+::selection { background: var(--color-lemon); color: var(--color-text); }
+
+/* contain: paint is off so the name tag and the tail can leave the box. */
+.dialogue-content,
+.conv-dialogue-box,
+.narration-screen {
+	contain: layout;
+	background: var(--color-dialogue-bg);
+	color: var(--color-text);
+	border-radius: calc(34 * var(--scene-px));
+	box-shadow: 0 calc(6 * var(--scene-px)) 0 var(--edge), 0 calc(16 * var(--scene-px)) calc(30 * var(--scene-px)) rgba(90, 60, 130, .3);
+	outline: calc(2.5 * var(--scene-px)) dashed var(--pink);
+	outline-offset: calc(-10 * var(--scene-px));
+	padding: calc(38 * var(--scene-px)) calc(42 * var(--scene-px)) calc(32 * var(--scene-px));
+}
+
+/* The bubble's tail, pointing at the avatar. */
+.single-dialogue:not(.single-dialogue--no-avatar) .dialogue-content::before,
+.speaker-row:not(.speaker-row--no-avatar) .dialogue-content::before {
+	content: '';
+	position: absolute;
+	left: calc(-20 * var(--scene-px));
+	top: calc(50% - 14 * var(--scene-px));
+	border-block: calc(14 * var(--scene-px)) solid transparent;
+	border-right: calc(22 * var(--scene-px)) solid var(--color-dialogue-bg);
+}
+
+.dialogue-content,
+.conv-dialogue-box { position: relative; }
+
+/* Keeps both avatars on screen on a phone held sideways. */
+.conv-dialogue-box { max-width: min(calc(640 * var(--scene-px)), 100vw - calc(390 * var(--scene-px))); }
+
+/* The tag: a tilted sticker, tinted by the character's colour. */
+.character-name {
+	position: absolute;
+	top: calc(-20 * var(--scene-px));
+	left: calc(30 * var(--scene-px));
+	margin: 0;
+	padding: calc(6 * var(--scene-px)) calc(18 * var(--scene-px));
+	border-radius: 999px;
+	border: calc(3 * var(--scene-px)) solid #fff;
+	background: color-mix(in srgb, currentColor 42%, var(--pink));
+	-webkit-text-fill-color: var(--color-text);
+	font-size: calc(20 * var(--scene-px));
+	font-weight: 800;
+	rotate: -2.5deg;
+	box-shadow: 0 calc(3 * var(--scene-px)) 0 rgba(120, 85, 160, .28);
+}
+
+.character-name:empty { display: none; }
+
+.dialogue-text {
+	font-size: calc(22 * var(--scene-px));
+	font-weight: 500;
+	line-height: 1.5;
+}
+
+/* Narration: a note taped to the screen. */
+.narration-screen {
+	background: var(--color-lemon);
+	box-shadow: 0 calc(16 * var(--scene-px)) calc(30 * var(--scene-px)) rgba(90, 60, 130, .3);
+	border-radius: calc(8 * var(--scene-px));
+	outline: 0;
+	rotate: -.6deg;
+	padding: calc(52 * var(--scene-px)) calc(48 * var(--scene-px)) calc(42 * var(--scene-px));
+}
+
+.narration-screen::before {
+	content: '';
+	position: absolute;
+	top: calc(-14 * var(--scene-px));
+	left: 50%;
+	width: calc(130 * var(--scene-px));
+	height: calc(30 * var(--scene-px));
+	translate: -50% 0;
+	rotate: 2deg;
+	opacity: .92;
+	background: var(--tape);
+	box-shadow: 0 1px 3px rgba(90, 60, 130, .25);
+}
+
+.narration-text { font-weight: 600; }
+
+/* Avatars: die-cut stickers that bob while they talk. */
+.avatar,
+.conv-avatar {
+	border-radius: 50%;
+	border: calc(7 * var(--scene-px)) solid #fff;
+	box-shadow: 0 calc(6 * var(--scene-px)) 0 var(--edge), 0 calc(14 * var(--scene-px)) calc(24 * var(--scene-px)) rgba(90, 60, 130, .3);
+	background: var(--color-lilac);
+}
+
+.avatar,
+.conv-avatar:not(.dimmed) { animation: pastel-bob 2.8s ease-in-out infinite; }
+
+.conv-avatar.dimmed { opacity: .72; filter: saturate(.6); }
+
+body[data-skin-bobbing-avatars="false"] :is(.avatar, .conv-avatar:not(.dimmed)) { animation: none; }
+
+@keyframes pastel-bob {
+	0%, 100% { translate: 0 0; rotate: -2deg; }
+	50% { translate: 0 calc(-7 * var(--scene-px)); rotate: 2deg; }
+}
+
+/* Top bar: a row of sweets, each its own flavour. */
+.control-button,
+.chapter-info {
+	color: var(--color-text);
+	font-weight: 800;
+	box-shadow: 0 3px 0 var(--edge);
+	border: 2px solid #fff;
+}
+
+.control-button { background: var(--pink); }
+.top-controls > :nth-child(5n + 1) > .control-button, .top-controls > .control-button:nth-child(5n + 1) { background: var(--color-sky); }
+.top-controls > :nth-child(5n + 2) > .control-button, .top-controls > .control-button:nth-child(5n + 2) { background: var(--color-mint); }
+.top-controls > :nth-child(5n + 3) > .control-button, .top-controls > .control-button:nth-child(5n + 3) { background: var(--color-lemon); }
+.top-controls > :nth-child(5n + 4) > .control-button, .top-controls > .control-button:nth-child(5n + 4) { background: var(--color-lilac); }
+.top-controls .control-button.active { background: var(--color-accent); color: var(--color-on-accent); }
+
+/* The engine centres this text with a line-height of --bar, which the 2px border offsets. */
+.chapter-info {
+	background: var(--color-panel-bg);
+	line-height: calc(var(--bar) - 4px);
+}
+
+@media (hover: hover) {
+	.control-button:hover { filter: brightness(1.05); rotate: -5deg; }
+	.chapter-info.checkpoints-enabled:hover { background: #fff; }
+}
+
+/* Chapter menu: a scrapbook page with tape on top. */
+.chapter-select-content {
+	width: min(calc(100% - 32px), calc(min(28em, 44vw) + 5em));
+	min-height: 0;
+	margin: 1.5em 0 1.5em clamp(16px, 5vw, 72px);
+	padding: 2.75em 2.5em 2.25em;
+	border-radius: var(--r-card);
+	background: var(--dots), var(--color-panel-bg);
+	box-shadow: var(--shadow-lg);
+	outline: 3px dashed var(--pink);
+	outline-offset: -10px;
+}
+
+.chapter-select-content::before {
+	content: '';
+	position: absolute;
+	top: -.7em;
+	left: 50%;
+	width: 9em;
+	height: 1.7em;
+	translate: -50% 0;
+	rotate: -2deg;
+	background: var(--tape);
+	opacity: .95;
+	box-shadow: 0 1px 3px rgba(90, 60, 130, .25);
+}
+
+.menu-title {
+	font-weight: 800;
+	letter-spacing: -.01em;
+	color: var(--headline);
+}
+
+.menu-author { font-size: 1.05em; color: var(--color-muted-text); }
+.menu-synopsis { color: var(--color-text); }
+
+/* Tiles pop in one by one, in five flavours. */
+.chapter-button,
+.chapter-button:not(:has(.chapter-progress)) {
+	color: var(--color-text);
+	border-radius: 1.25em;
+	border: 2px solid #fff;
+	box-shadow: 0 3px 0 rgba(120, 85, 160, .25);
+	background: var(--pink);
+	font-weight: 800;
+	min-height: 3.4em;
+	animation: pastel-pop .42s var(--ease-spring) backwards;
+	animation-delay: calc(var(--i) * 45ms);
+}
+
+.chapter-button:nth-child(5n + 2) { background: var(--color-mint); }
+.chapter-button:nth-child(5n + 3) { background: var(--color-lemon); }
+.chapter-button:nth-child(5n + 4) { background: var(--color-sky); }
+.chapter-button:nth-child(5n) { background: var(--color-lilac); }
+
+@keyframes pastel-pop {
+	from { opacity: 0; transform: scale(.86) rotate(-1.5deg); }
+}
+
+@media (hover: hover) {
+	.chapter-button:hover { background: #fff; rotate: -.8deg; }
+}
+
+.chapter-button .row-meta { color: var(--color-text); font-weight: 800; }
+.chapter-button .row-meta .icon { color: var(--headline); }
+
+.chapter-progress {
+	height: 10px;
+	background: rgba(255, 255, 255, .75);
+}
+
+.chapter-progress::before {
+	background: repeating-linear-gradient(-45deg, var(--color-accent) 0 7px, var(--accent-hover) 7px 14px);
+}
+
+/* Buttons: puffy, and they squash when pressed. */
+.ui-button {
+	font-weight: 800;
+	border-color: #fff;
+	box-shadow: 0 5px 0 var(--press), 0 10px 18px rgba(120, 85, 160, .28);
+}
+
+.ui-button.secondary:not(.copied, .copy-failed),
+.pause-left .ui-button.secondary:not(.copied, .copy-failed) {
+	background: var(--color-lilac);
+	color: var(--color-text);
+	box-shadow: 0 5px 0 var(--press-2), 0 10px 18px rgba(120, 85, 160, .22);
+}
+
+.ui-button:is(.copied, .copy-failed) { color: var(--color-text); }
+
+.ui-button.danger-solid { color: #4a1420; box-shadow: 0 5px 0 #d96060; }
+
+.ui-button:active {
+	translate: 0 4px;
+	box-shadow: 0 1px 0 var(--press);
+	transform: none;
+}
+
+.close-button { background: var(--pink); color: var(--color-text); }
+
+.mute-toggle {
+	border: 2px solid #fff;
+	background: var(--color-mint);
+	color: var(--color-text);
+	box-shadow: 0 3px 0 var(--edge);
+}
+
+@media (hover: hover) {
+	.mute-toggle:hover { background: var(--color-mint); color: var(--color-text); rotate: -5deg; }
+}
+
+/* Pop-ups and panels */
+.modal-content,
+.volume-panel,
+.autoplay-panel,
+.more-panel { border: 3px solid #fff; }
+
+.modal-head { background: var(--pink); }
+
+.modal-title { font-weight: 800; color: var(--color-text); }
+.modal-title .icon { color: var(--headline); }
+.modal-head .close-button { background: rgba(255, 255, 255, .7); }
+.modal-body { padding-top: 18px; }
+
+.modal-foot { background: transparent; border-top: 2px dashed var(--line); }
+
+.log-entry .character-name {
+	position: static;
+	display: inline-block;
+	rotate: none;
+	border-width: 2px;
+	padding: 2px 12px;
+	margin-bottom: 6px;
+	font-size: .88rem;
+	box-shadow: none;
+}
+
+.log-entry.narration .text { font-style: italic; }
+
+.log-avatar { border: 2px solid #fff; box-shadow: 0 2px 0 var(--edge); }
+
+.row-title { font-weight: 700; }
+
+/* The slider's thumb is a heart. */
+.slider-wave { display: none; }
+
+/* The engine clears the fill while the wave is drawn, and this skin has no wave. */
+.slider { --fill-color: var(--color-accent) !important; }
+
+.slider.held { --track: 6px; --thumb: 20px; }
+
+.slider::-webkit-slider-thumb {
+	width: 26px;
+	height: 26px;
+	margin-top: calc((var(--track) - 26px) / 2);
+	border-radius: 0;
+	background: var(--heart) center / contain no-repeat;
+	box-shadow: none;
+}
+
+.slider::-moz-range-thumb {
+	width: 26px;
+	height: 26px;
+	border-radius: 0;
+	background: var(--heart) center / contain no-repeat;
+	box-shadow: none;
+}
+
+.switch { background: var(--color-lilac); }
+
+/* Start, title, and end screens: a sticker-outlined title on a dotted sky. */
+.start-gate { background: var(--dots), linear-gradient(160deg, var(--pink), var(--color-lilac) 55%, var(--color-sky)); }
+
+.start-title,
+.start-gate:not(.start-gate--resume) .start-title {
+	color: var(--headline);
+	font-weight: 800;
+	-webkit-text-stroke: 8px #fff;
+	paint-order: stroke fill;
+}
+
+.start-subtitle { font-weight: 700; color: var(--color-text); }
+
+.screen-title {
+	color: var(--headline);
+	font-weight: 800;
+	letter-spacing: 0;
+	-webkit-text-stroke: calc(12 * var(--scene-px)) #fff;
+	paint-order: stroke fill;
+	filter: drop-shadow(0 calc(5 * var(--scene-px)) 0 var(--edge));
+}
+
+.screen-title:not(:empty)::before,
+.screen-title:not(:empty)::after {
+	content: '\2726';
+	margin-inline: .35em;
+	font-size: .5em;
+	vertical-align: .35em;
+	color: #ffc93c;
+	-webkit-text-stroke: calc(7 * var(--scene-px)) #fff;
+}
+
+.screen-subtitle { color: var(--color-text); font-weight: 700; }
+
+/* Without the dim the subtitle sits on the art, so it gets the sticker outline too. */
+.full-screen-overlay--no-dim .screen-subtitle {
+	-webkit-text-stroke: calc(7 * var(--scene-px)) #fff;
+	paint-order: stroke fill;
+}
+
+/* Pause menu */
+.pause-menu {
+	background: var(--dots), linear-gradient(160deg, var(--pink), var(--color-lilac) 60%, var(--color-sky));
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+	--pause-step: calc(var(--ctl) + 2px);
+}
+
+.pause-left { gap: 14px; }
+
+.pause-chapter {
+	color: var(--headline);
+	font-weight: 800;
+	-webkit-text-stroke: 6px #fff;
+	paint-order: stroke fill;
+}
+
+.pause-assets {
+	padding: 4px 12px;
+	border-radius: var(--r-pill);
+	background: var(--color-panel-bg);
+	color: var(--color-text);
+	font-weight: 600;
+}
+
+.pause-right {
+	border: 3px solid #fff;
+	box-shadow: var(--shadow-lg);
+}
+
+/* Notifications and tooltips */
+.toast {
+	border: 2px solid #fff;
+	background: var(--color-lemon);
+	color: var(--color-text);
+}
+
+.toast.success { background: var(--color-mint); color: var(--color-text); }
+.toast.error { background: var(--pink); color: #6c1636; }
+
+@media (prefers-reduced-motion: reduce) {
+	.avatar,
+	.conv-avatar:not(.dimmed),
+	.chapter-button { animation: none; }
+}
+
+@media (max-height: 520px) {
+	.chapter-select-content { margin-block: .75em; padding: 2em 1.75em 1.5em; }
+	.start-title,
+	.start-gate:not(.start-gate--resume) .start-title { -webkit-text-stroke-width: 6px; }
+	.pause-left { gap: 10px; }
+}
+
+@media (max-width: 600px) and (orientation: portrait) {
+	.chapter-select-content {
+		flex: none;
+		width: calc(100% - 24px);
+		margin: 60px 12px 16px;
+		padding: 2.25em 1.5em 1.75em;
+	}
+}

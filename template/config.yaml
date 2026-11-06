@@ -1,0 +1,40 @@
+language: en
+title: "Visual Novel"
+author: "by John Doe"
+synopsis: "A visual novel project"
+logo: "logo.webp"
+background: "background.webp"
+favicon: "favicon.webp"
+
+chapters:
+  - name: "Sample Chapter"
+    file: "sample"
+
+settings:
+  showLogButton: true
+  showTypewriterButton: true
+  showAutoplayButton: true
+  enableTypewriter: true
+  typewriterSpeed: 30
+  enableCheckpoints: true
+  allowHoldToSkip: false
+
+theme:
+  customFonts:
+
+  fonts:
+    body:
+    dialogue: body
+    characterName: body
+    ui: body
+    title: body
+
+  colors:
+    accent:
+    text:
+    mutedText:
+    pageBackground:
+    panelBackground:
+    dialogueBackground:
+    success:
+    error:

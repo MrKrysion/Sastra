@@ -1,0 +1,101 @@
+{
+	"a11y": {
+		"dialogue": "{name} says: {text}"
+	},
+	"controls": {
+		"fullscreenEnter": "Enter fullscreen",
+		"fullscreenExit": "Exit fullscreen",
+		"fullscreenBrowser": "Press {key} to exit fullscreen",
+		"typewriterEnable": "Enable typewriter effect",
+		"typewriterDisable": "Disable typewriter effect",
+		"typewriterEnabled": "Typewriter effect enabled",
+		"typewriterDisabled": "Typewriter effect disabled",
+		"volume": "Volume",
+		"muted": "Muted",
+		"mute": "Mute",
+		"unmute": "Unmute",
+		"log": "Log",
+		"autoplay": "Autoplay",
+		"autoplayEnable": "Enable autoplay",
+		"autoplayDisable": "Disable autoplay",
+		"autoplaySpeed": "Reading speed",
+		"autoplaySpeedVerySlow": "Very slow",
+		"autoplaySpeedSlow": "Slow",
+		"autoplaySpeedNormal": "Normal",
+		"autoplaySpeedFast": "Fast",
+		"autoplaySpeedVeryFast": "Very fast",
+		"autoplayProgress": "Progress bar",
+		"autoplayProgressShow": "Show progress bar",
+		"autoplayProgressHide": "Hide progress bar",
+		"more": "More"
+	},
+	"startGate": {
+		"start": "Start",
+		"clickToStart": "Click to start",
+		"continueTitle": "Continue?",
+		"resumeFrom": "Resume from {checkpoint}?",
+		"checkpointNamed": "checkpoint \"{name}\"",
+		"lastCheckpoint": "your last checkpoint",
+		"continue": "Continue",
+		"restart": "Restart"
+	},
+	"log": {
+		"title": "Dialogue log"
+	},
+	"credits": {},
+	"pause": {
+		"checkpoints": "Checkpoints",
+		"checkpointFallback": "Checkpoint {number}",
+		"checkpointLocked": "Checkpoint not yet unlocked",
+		"openMenu": "Open chapter menu"
+	},
+	"endScreen": {
+		"theEnd": "The End",
+		"share": "Share",
+		"credits": "Credits",
+		"backToMenu": "Back to menu",
+		"nextChapter": "Next chapter",
+		"copied": "Copied",
+		"copyFailed": "Couldn't copy"
+	},
+	"toast": {
+		"checkpointUnlocked": "Checkpoint unlocked: {name}"
+	},
+	"share": {
+		"text": "I've just finished “{chapter}”\n\n{url}"
+	},
+	"reset": {
+		"tooltip": "Reset progress",
+		"title": "Reset progress?",
+		"desc": "This will delete all saved progress and unlocked checkpoints.",
+		"confirm": "Reset",
+		"cancel": "Cancel"
+	},
+	"language": {
+		"title": "Select language",
+		"tooltip": "Language"
+	},
+	"errors": {
+		"networkTitle": "Network error",
+		"networkDesc": "Couldn't load the next part of the story. Check your connection and try again.",
+		"retry": "Retry",
+		"title": "Something went wrong",
+		"desc": "The story couldn't continue. Try again, and if it keeps happening, let the creator know.",
+		"details": "Details",
+		"copy": "Copy"
+	},
+	"madeWith": "Made with",
+	"close": "Close",
+	"orientation": "Rotate your device to landscape to play.",
+	"alt": {
+		"character": "Character",
+		"character1": "Character 1",
+		"character2": "Character 2",
+		"storyImage": "Story image",
+		"titleImage": "Title image",
+		"gameLogo": "Logo"
+	},
+	"cookies": {
+		"tooltip": "Cookie settings"
+	}
+}

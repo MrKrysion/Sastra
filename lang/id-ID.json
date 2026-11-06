@@ -1,0 +1,101 @@
+{
+	"a11y": {
+		"dialogue": "{name} berkata: {text}"
+	},
+	"controls": {
+		"fullscreenEnter": "Layar penuh",
+		"fullscreenExit": "Keluar dari layar penuh",
+		"fullscreenBrowser": "Tekan {key} untuk keluar dari layar penuh",
+		"typewriterEnable": "Aktifkan efek mesin ketik",
+		"typewriterDisable": "Nonaktifkan efek mesin ketik",
+		"typewriterEnabled": "Efek mesin ketik aktif",
+		"typewriterDisabled": "Efek mesin ketik nonaktif",
+		"volume": "Volume",
+		"muted": "Dibisukan",
+		"mute": "Bisukan",
+		"unmute": "Bunyikan",
+		"log": "Riwayat",
+		"autoplay": "Maju otomatis",
+		"autoplayEnable": "Aktifkan maju otomatis",
+		"autoplayDisable": "Nonaktifkan maju otomatis",
+		"autoplaySpeed": "Kecepatan baca",
+		"autoplaySpeedVerySlow": "Sangat lambat",
+		"autoplaySpeedSlow": "Lambat",
+		"autoplaySpeedNormal": "Normal",
+		"autoplaySpeedFast": "Cepat",
+		"autoplaySpeedVeryFast": "Sangat cepat",
+		"autoplayProgress": "Bilah progres",
+		"autoplayProgressShow": "Tampilkan bilah progres",
+		"autoplayProgressHide": "Sembunyikan bilah progres",
+		"more": "Lainnya"
+	},
+	"startGate": {
+		"start": "Mulai",
+		"clickToStart": "Klik untuk mulai",
+		"continueTitle": "Lanjut?",
+		"resumeFrom": "Lanjutkan dari {checkpoint}?",
+		"checkpointNamed": "titik simpan \"{name}\"",
+		"lastCheckpoint": "titik simpan terakhirmu",
+		"continue": "Lanjutkan",
+		"restart": "Mulai ulang"
+	},
+	"log": {
+		"title": "Riwayat dialog"
+	},
+	"credits": {},
+	"pause": {
+		"checkpoints": "Titik simpan",
+		"checkpointFallback": "Titik simpan {number}",
+		"checkpointLocked": "Titik simpan belum terbuka",
+		"openMenu": "Buka menu bab"
+	},
+	"endScreen": {
+		"theEnd": "Tamat",
+		"share": "Bagikan",
+		"credits": "Kredit",
+		"backToMenu": "Kembali ke menu",
+		"nextChapter": "Bab berikutnya",
+		"copied": "Tersalin!",
+		"copyFailed": "Gagal menyalin"
+	},
+	"toast": {
+		"checkpointUnlocked": "Titik simpan baru: {name}"
+	},
+	"share": {
+		"text": "Aku baru saja menyelesaikan “{chapter}”\n\n{url}"
+	},
+	"reset": {
+		"tooltip": "Hapus progres",
+		"title": "Hapus progres?",
+		"desc": "Semua progres tersimpan dan titik simpan yang terbuka akan dihapus.",
+		"confirm": "Hapus",
+		"cancel": "Batal"
+	},
+	"language": {
+		"title": "Pilih bahasa",
+		"tooltip": "Bahasa"
+	},
+	"errors": {
+		"networkTitle": "Gangguan jaringan",
+		"networkDesc": "Tidak dapat memuat bagian cerita selanjutnya. Periksa koneksimu dan coba lagi.",
+		"retry": "Coba lagi",
+		"title": "Terjadi kesalahan",
+		"desc": "Cerita tidak dapat dilanjutkan. Coba lagi, dan jika masih terjadi, beri tahu pembuatnya.",
+		"details": "Detail",
+		"copy": "Salin"
+	},
+	"madeWith": "Dibuat dengan",
+	"close": "Tutup",
+	"orientation": "Putar layar ke mode lanskap untuk bermain.",
+	"alt": {
+		"character": "Karakter",
+		"character1": "Karakter 1",
+		"character2": "Karakter 2",
+		"storyImage": "Gambar cerita",
+		"titleImage": "Gambar judul",
+		"gameLogo": "Logo game"
+	},
+	"cookies": {
+		"tooltip": "Pengaturan cookie"
+	}
+}

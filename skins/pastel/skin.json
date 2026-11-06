@@ -1,0 +1,32 @@
+{
+  "name": "Pastel",
+  "author": "Ken Nisaka",
+  "version": "1.0.0",
+  "description": "Candy colours, sticker avatars, washi tape, and puffy buttons.",
+  "requires": "2.0",
+  "colors": {
+    "mint": {
+      "label": "Mint",
+      "default": "#bdf0dc"
+    },
+    "lemon": {
+      "label": "Lemon",
+      "default": "#fff0a8"
+    },
+    "lilac": {
+      "label": "Lilac",
+      "default": "#d9c8ff"
+    },
+    "sky": {
+      "label": "Sky",
+      "default": "#bfe4ff"
+    }
+  },
+  "settings": {
+    "bobbingAvatars": {
+      "label": "Avatars bob while talking",
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+	"a11y": {
+		"dialogue": "{name} говорит: {text}"
+	},
+	"controls": {
+		"fullscreenEnter": "Полноэкранный режим",
+		"fullscreenExit": "Выйти из полноэкранного режима",
+		"fullscreenBrowser": "Нажмите {key}, чтобы выйти из полноэкранного режима",
+		"typewriterEnable": "Включить эффект пишущей машинки",
+		"typewriterDisable": "Выключить эффект пишущей машинки",
+		"typewriterEnabled": "Эффект пишущей машинки включен",
+		"typewriterDisabled": "Эффект пишущей машинки выключен",
+		"volume": "Громкость",
+		"muted": "Без звука",
+		"mute": "Отключить звук",
+		"unmute": "Включить звук",
+		"log": "История",
+		"autoplay": "Авточтение",
+		"autoplayEnable": "Включить авточтение",
+		"autoplayDisable": "Выключить авточтение",
+		"autoplaySpeed": "Скорость чтения",
+		"autoplaySpeedVerySlow": "Очень медленная",
+		"autoplaySpeedSlow": "Медленная",
+		"autoplaySpeedNormal": "Нормальная",
+		"autoplaySpeedFast": "Быстрая",
+		"autoplaySpeedVeryFast": "Очень быстрая",
+		"autoplayProgress": "Индикатор прогресса",
+		"autoplayProgressShow": "Показать индикатор прогресса",
+		"autoplayProgressHide": "Скрыть индикатор прогресса",
+		"more": "Ещё"
+	},
+	"startGate": {
+		"start": "Начать",
+		"clickToStart": "Нажмите, чтобы начать",
+		"continueTitle": "Продолжить?",
+		"resumeFrom": "Продолжить с {checkpoint}?",
+		"checkpointNamed": "контрольной точки «{name}»",
+		"lastCheckpoint": "вашей последней контрольной точки",
+		"continue": "Продолжить",
+		"restart": "Начать сначала"
+	},
+	"log": {
+		"title": "История диалогов"
+	},
+	"credits": {},
+	"pause": {
+		"checkpoints": "Контрольные точки",
+		"checkpointFallback": "Контрольная точка {number}",
+		"checkpointLocked": "Контрольная точка еще не разблокирована",
+		"openMenu": "Открыть меню главы"
+	},
+	"endScreen": {
+		"theEnd": "Конец",
+		"share": "Поделиться",
+		"credits": "Титры",
+		"backToMenu": "Вернуться в меню",
+		"nextChapter": "Следующая глава",
+		"copied": "Скопировано!",
+		"copyFailed": "Не удалось скопировать"
+	},
+	"toast": {
+		"checkpointUnlocked": "Контрольная точка разблокирована: {name}"
+	},
+	"share": {
+		"text": "Глава «{chapter}» пройдена!\n\n{url}"
+	},
+	"reset": {
+		"tooltip": "Удалить прогресс",
+		"title": "Удалить прогресс?",
+		"desc": "Это действие удалит весь сохраненный прогресс и разблокированные контрольные точки.",
+		"confirm": "Удалить",
+		"cancel": "Отмена"
+	},
+	"language": {
+		"title": "Выберите язык",
+		"tooltip": "Язык"
+	},
+	"errors": {
+		"networkTitle": "Ошибка сети",
+		"networkDesc": "Не удалось загрузить следующую часть истории. Проверьте подключение к сети и повторите попытку.",
+		"retry": "Попробовать ещё раз",
+		"title": "Что-то пошло не так",
+		"desc": "Не удалось продолжить историю. Попробуйте ещё раз, а если ошибка повторится, сообщите автору.",
+		"details": "Подробности",
+		"copy": "Копировать"
+	},
+	"madeWith": "Сделано на",
+	"close": "Закрыть",
+	"orientation": "Поверните устройство горизонтально, чтобы играть.",
+	"alt": {
+		"character": "Персонаж",
+		"character1": "Персонаж 1",
+		"character2": "Персонаж 2",
+		"storyImage": "Иллюстрация",
+		"titleImage": "Заставка",
+		"gameLogo": "Логотип"
+	},
+	"cookies": {
+		"tooltip": "Настройки файлов cookie"
+	}
+}

@@ -1,0 +1,101 @@
+{
+	"a11y": {
+		"dialogue": "{name}说：{text}"
+	},
+	"controls": {
+		"fullscreenEnter": "进入全屏",
+		"fullscreenExit": "退出全屏",
+		"fullscreenBrowser": "按 {key} 退出全屏",
+		"typewriterEnable": "开启打字机效果",
+		"typewriterDisable": "关闭打字机效果",
+		"typewriterEnabled": "打字机效果已开启",
+		"typewriterDisabled": "打字机效果已关闭",
+		"volume": "音量",
+		"muted": "已静音",
+		"mute": "静音",
+		"unmute": "取消静音",
+		"log": "对话记录",
+		"autoplay": "自动推进",
+		"autoplayEnable": "开启自动推进",
+		"autoplayDisable": "关闭自动推进",
+		"autoplaySpeed": "阅读速度",
+		"autoplaySpeedVerySlow": "极慢",
+		"autoplaySpeedSlow": "慢速",
+		"autoplaySpeedNormal": "正常",
+		"autoplaySpeedFast": "快速",
+		"autoplaySpeedVeryFast": "极快",
+		"autoplayProgress": "进度条",
+		"autoplayProgressShow": "显示进度条",
+		"autoplayProgressHide": "隐藏进度条",
+		"more": "更多"
+	},
+	"startGate": {
+		"start": "开始",
+		"clickToStart": "点击开始",
+		"continueTitle": "继续吗？",
+		"resumeFrom": "从{checkpoint}继续？",
+		"checkpointNamed": "存档点“{name}”",
+		"lastCheckpoint": "您的上一个存档点",
+		"continue": "继续",
+		"restart": "重新开始"
+	},
+	"log": {
+		"title": "对话记录"
+	},
+	"credits": {},
+	"pause": {
+		"checkpoints": "存档点",
+		"checkpointFallback": "存档点 {number}",
+		"checkpointLocked": "存档点尚未解锁",
+		"openMenu": "打开章节菜单"
+	},
+	"endScreen": {
+		"theEnd": "完",
+		"share": "分享",
+		"credits": "制作人员",
+		"backToMenu": "返回菜单",
+		"nextChapter": "下一章",
+		"copied": "已复制！",
+		"copyFailed": "复制失败"
+	},
+	"toast": {
+		"checkpointUnlocked": "已解锁存档点：{name}"
+	},
+	"share": {
+		"text": "我刚看完了“{chapter}”\n\n{url}"
+	},
+	"reset": {
+		"tooltip": "删除进度",
+		"title": "要删除进度吗？",
+		"desc": "这将删除所有已保存的进度和已解锁的存档点。",
+		"confirm": "删除",
+		"cancel": "取消"
+	},
+	"language": {
+		"title": "选择语言",
+		"tooltip": "语言"
+	},
+	"errors": {
+		"networkTitle": "网络错误",
+		"networkDesc": "无法加载故事的下一部分。请检查您的网络连接并重试。",
+		"retry": "重试",
+		"title": "出了点问题",
+		"desc": "故事无法继续。请重试；如果问题仍然存在，请告知作者。",
+		"details": "详细信息",
+		"copy": "复制"
+	},
+	"madeWith": "制作工具：",
+	"close": "关闭",
+	"orientation": "请将设备转为横屏后再游玩。",
+	"alt": {
+		"character": "角色",
+		"character1": "角色 1",
+		"character2": "角色 2",
+		"storyImage": "故事插图",
+		"titleImage": "标题图片",
+		"gameLogo": "游戏标志"
+	},
+	"cookies": {
+		"tooltip": "Cookie 设置"
+	}
+}

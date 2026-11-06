@@ -1,16 +1,20 @@
-SAMPLE ASSETS
+NOT COVERED BY THE GPL
 
-The files below are NOT covered by the GNU GPL v3 or the Sastra Game Data &
-Asset Exception in LICENSE.txt. They are included so the template runs the
-moment you open it.
+The files below are NOT covered by the GNU GPL v3 (LICENSE) or the Game Data &
+Asset Exception (LICENSE-EXCEPTION.txt). Everything else in this repository is.
 
-SASTRA LOGO - COPYRIGHT AND TRADEMARK
+SASTRA LOGO AND FAVICON - COPYRIGHT AND TRADEMARK
 
-  - logo.webp
-  - favicon.webp
+  - template/logo.webp
+  - template/favicon.webp
 
 Copyright (c) 2026 Ken "Krysion" Nisaka. All rights reserved. The Sastra name
 and logo are trademarks of Ken "Krysion" Nisaka.
+
+The "Made with Sastra" mark drawn inside index.html is part of the engine and
+is GPL like the rest of the code: you may modify or remove it. The trademark
+still applies to the name and logo, so a modified engine must not present
+itself as the official Sastra.
 
 You may, without asking:
 
@@ -28,14 +32,21 @@ You may NOT, without written permission from Ken Nisaka:
 
 To ask, see https://www.krysion.com.
 
+SKIN PREVIEW PICTURES - ALL RIGHTS RESERVED
+
+  - skins/*/preview.webp
+
+Screenshots of Sastra's sample characters. You may not copy, redistribute, or
+reuse them. They are left out of the skin ZIPs. The skins themselves
+(skin.css, skin.json, README.md) are covered by the GPL.
+
 FREE TO USE
 
-  - avatars/avatar.webp
-  - background.webp
-  - backgrounds/background.webp
+  - template/avatars/avatar.webp
+  - template/background.webp
+  - template/backgrounds/background.webp
 
 A flat placeholder avatar and plain gradients. Keep them, edit them, or
 replace them - no restrictions.
 
-The sample text files (config.yaml, chapters/sample.yaml) are yours to edit,
-reuse, and build on freely.
+The same terms are shipped with the template in template/ASSETS-LICENSE.txt.

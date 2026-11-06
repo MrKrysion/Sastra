@@ -1,0 +1,101 @@
+{
+	"a11y": {
+		"dialogue": "{name} dit : {text}"
+	},
+	"controls": {
+		"fullscreenEnter": "Passer en plein écran",
+		"fullscreenExit": "Quitter le plein écran",
+		"fullscreenBrowser": "Appuyez sur {key} pour quitter le plein écran",
+		"typewriterEnable": "Activer l'effet machine à écrire",
+		"typewriterDisable": "Désactiver l'effet machine à écrire",
+		"typewriterEnabled": "Effet machine à écrire activé",
+		"typewriterDisabled": "Effet machine à écrire désactivé",
+		"volume": "Volume",
+		"muted": "Son coupé",
+		"mute": "Couper le son",
+		"unmute": "Réactiver le son",
+		"log": "Historique",
+		"autoplay": "Avance automatique",
+		"autoplayEnable": "Activer l'avance automatique",
+		"autoplayDisable": "Désactiver l'avance automatique",
+		"autoplaySpeed": "Vitesse de lecture",
+		"autoplaySpeedVerySlow": "Très lente",
+		"autoplaySpeedSlow": "Lente",
+		"autoplaySpeedNormal": "Normale",
+		"autoplaySpeedFast": "Rapide",
+		"autoplaySpeedVeryFast": "Très rapide",
+		"autoplayProgress": "Barre de progression",
+		"autoplayProgressShow": "Afficher la barre de progression",
+		"autoplayProgressHide": "Masquer la barre de progression",
+		"more": "Plus"
+	},
+	"startGate": {
+		"start": "Commencer",
+		"clickToStart": "Cliquez pour commencer",
+		"continueTitle": "Continuer ?",
+		"resumeFrom": "Reprendre depuis {checkpoint} ?",
+		"checkpointNamed": "le point de sauvegarde « {name} »",
+		"lastCheckpoint": "votre dernier point de sauvegarde",
+		"continue": "Continuer",
+		"restart": "Recommencer"
+	},
+	"log": {
+		"title": "Historique des dialogues"
+	},
+	"credits": {},
+	"pause": {
+		"checkpoints": "Points de sauvegarde",
+		"checkpointFallback": "Point de sauvegarde {number}",
+		"checkpointLocked": "Point de sauvegarde non débloqué",
+		"openMenu": "Ouvrir le menu du chapitre"
+	},
+	"endScreen": {
+		"theEnd": "Fin",
+		"share": "Partager",
+		"credits": "Crédits",
+		"backToMenu": "Retour au menu",
+		"nextChapter": "Chapitre suivant",
+		"copied": "Copié !",
+		"copyFailed": "Copie impossible"
+	},
+	"toast": {
+		"checkpointUnlocked": "Point de sauvegarde débloqué : {name}"
+	},
+	"share": {
+		"text": "Je viens de terminer « {chapter} »\n\n{url}"
+	},
+	"reset": {
+		"tooltip": "Supprimer la progression",
+		"title": "Supprimer la progression ?",
+		"desc": "Toute votre progression et vos points de sauvegarde débloqués seront supprimés.",
+		"confirm": "Supprimer",
+		"cancel": "Annuler"
+	},
+	"language": {
+		"title": "Choisir la langue",
+		"tooltip": "Langue"
+	},
+	"errors": {
+		"networkTitle": "Erreur réseau",
+		"networkDesc": "Impossible de charger la suite de l'histoire. Vérifiez votre connexion et réessayez.",
+		"retry": "Réessayer",
+		"title": "Une erreur s'est produite",
+		"desc": "L'histoire n'a pas pu continuer. Réessayez, et si le problème persiste, prévenez son créateur.",
+		"details": "Détails",
+		"copy": "Copier"
+	},
+	"madeWith": "Créé avec",
+	"close": "Fermer",
+	"orientation": "Tournez votre appareil en mode paysage pour jouer.",
+	"alt": {
+		"character": "Personnage",
+		"character1": "Personnage 1",
+		"character2": "Personnage 2",
+		"storyImage": "Image de l'histoire",
+		"titleImage": "Image de titre",
+		"gameLogo": "Logo du jeu"
+	},
+	"cookies": {
+		"tooltip": "Paramètres des cookies"
+	}
+}

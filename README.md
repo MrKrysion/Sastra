@@ -34,7 +34,7 @@ Sastra is a visual novel engine that runs in the browser. The whole engine is on
 
 ## Quick start
 
-1. **[Download the latest release](https://github.com/MrKrysion/Sastra/releases/latest)** (`Sastra-Template-<version>.zip`) and unzip it, or clone this repo.
+1. **[Download the latest release](https://github.com/MrKrysion/Sastra/releases/latest)** (`Sastra-Template-<version>.zip`) and unzip it. It holds the engine and a small sample project.
 2. Serve the folder over `http://`. The easiest way is the **Live Server** extension for VS Code: open `index.html` and click *Go Live*. Or, from a terminal in the folder:
    ```
    python -m http.server 8000
@@ -46,17 +46,21 @@ Sastra is a visual novel engine that runs in the browser. The whole engine is on
 
 ## What's in this repo
 
-This repo **is** the template: the engine plus a sample project, exactly what the release ZIP contains.
+This is the engine's source. To make a game, use the release download above: it is `index.html` plus the contents of `template/`.
 
 | Path | What it is |
 |------|------------|
-| `index.html` | The engine. One file: HTML, CSS, and JavaScript. |
-| `config.yaml` | Your game's title, chapter list, languages, colours, and fonts. |
-| `chapters/` | Your story, one YAML file per chapter. |
-| `avatars/`, `backgrounds/`, `sprites/`, `images/`, `music/`, `sounds/`, `videos/` | Your assets. |
-| `lang/` | Optional interface [language packs](https://www.sastra.dev/extras). English is built in. |
-| `LICENSE.txt` | GPL-3.0 with the Game Data & Asset Exception. |
-| `ASSETS-LICENSE.txt` | Terms for the sample artwork (see below). |
+| `index.html` | The engine, with its comments. One file: HTML, CSS, and JavaScript. The file in a release has the comments removed. |
+| `template/` | The starter project the release zip is built from: `config.yaml`, a sample chapter, empty asset folders, and the licence files. |
+| `lang/` | Interface [language packs](lang/README.md), one JSON file per language. English is built in. |
+| `plugins/` | The official [plugins](plugins/README.md): the Screens plugin and the Google Analytics plugin. |
+| `skins/` | The official [skins](skins/README.md), and a blank starter skin to copy. |
+| `docs/ARCHITECTURE.md` | How the engine is put together. Read it before changing the code. |
+| `CHANGELOG.md` | Every release. |
+| `LICENSE` | The GNU GPL v3. |
+| `LICENSE-EXCEPTION.txt` | The Game Data & Asset Exception, which keeps your games yours. |
+| `ASSETS-LICENSE.txt` | What the GPL does not cover: the logo and the skin previews. |
+| `THIRD-PARTY-NOTICES.md` | The licences of the code and icons bundled in the engine. |
 
 ## Features
 
@@ -77,7 +81,7 @@ Everything is at **[sastra.dev/docs](https://www.sastra.dev/docs/)**, written fo
 ## Extras
 
 - **[Sastra Compressor](https://github.com/MrKrysion/Sastra-Compressor)**: a Windows app that compresses your images, audio, and video for the web.
-- **[PWA starter kit, analytics add-on, and language packs](https://www.sastra.dev/extras)**.
+- **[Plugins, the PWA starter kit, and language packs](https://www.sastra.dev/extras)**.
 
 ## Reporting problems
 
@@ -85,9 +89,14 @@ Found a bug or have an idea? [Open an issue](https://github.com/MrKrysion/Sastra
 
 ## Licence
 
-The **engine** (`index.html`) is licensed under the **GNU GPL v3** with a **Game Data & Asset Exception**: your story, art, music, and characters stay yours, including for commercial games. If you modify the engine itself and distribute it, the modified engine must stay GPL. Full text in [`LICENSE.txt`](LICENSE.txt); plain-English summary at [sastra.dev/license](https://www.sastra.dev/license).
+The **engine** (`index.html`) is licensed under the **GNU GPL v3** with a **Game Data & Asset Exception**: your story, art, music, and characters stay yours, including for commercial games. If you modify the engine itself and distribute it, the modified engine must stay GPL. Full text in [`LICENSE`](LICENSE) and [`LICENSE-EXCEPTION.txt`](LICENSE-EXCEPTION.txt); plain-English summary at [sastra.dev/license](https://www.sastra.dev/license).
 
-The **sample character art and Sastra logo** in this template are copyrighted and **not** covered by the GPL. They're included only so the template runs out of the box. Replace them before you publish a game. See [`ASSETS-LICENSE.txt`](ASSETS-LICENSE.txt).
+Two things are **not** covered by the GPL, and [`ASSETS-LICENSE.txt`](ASSETS-LICENSE.txt) spells out both:
+
+- The **Sastra logo** is copyrighted and trademarked. You can keep it as it comes, or delete or replace it, but don't modify or recolour it.
+- The **preview pictures** in `skins/` show Sastra's sample characters and are all rights reserved. The skins themselves are GPL.
+
+The placeholder avatar and backgrounds in the template are free to use.
 
 Sastra™ and the Sastra logo are trademarks of Ken "Krysion" Nisaka.
 

@@ -1,0 +1,41 @@
+SAMPLE ASSETS
+
+The files below are NOT covered by the GNU GPL v3 or the Sastra Game Data &
+Asset Exception in LICENSE.txt. They are included so the template runs the
+moment you open it.
+
+SASTRA LOGO - COPYRIGHT AND TRADEMARK
+
+  - logo.webp
+  - favicon.webp
+
+Copyright (c) 2026 Ken "Krysion" Nisaka. All rights reserved. The Sastra name
+and logo are trademarks of Ken "Krysion" Nisaka.
+
+You may, without asking:
+
+  - Keep these files in your game, exactly as they come in the template, or
+    delete or replace them. Neither is required.
+  - Show the unmodified logo to refer to Sastra accurately, for example "made
+    with Sastra", a link, an article, or a tutorial, as long as it doesn't
+    suggest your game or work is official or endorsed by Sastra.
+
+You may NOT, without written permission from Ken Nisaka:
+
+  - Modify, recolour, crop, distort, or combine the logo with other marks.
+  - Use the name or logo for your own products, studio, or merchandise, or in
+    a way that damages Sastra's reputation or misleads people.
+
+To ask, see https://www.krysion.com.
+
+FREE TO USE
+
+  - avatars/avatar.webp
+  - background.webp
+  - backgrounds/background.webp
+
+A flat placeholder avatar and plain gradients. Keep them, edit them, or
+replace them - no restrictions.
+
+The sample text files (config.yaml, chapters/sample.yaml) are yours to edit,
+reuse, and build on freely.

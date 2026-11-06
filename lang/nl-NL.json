@@ -1,0 +1,101 @@
+{
+	"a11y": {
+		"dialogue": "{name} zegt: {text}"
+	},
+	"controls": {
+		"fullscreenEnter": "Volledig scherm",
+		"fullscreenExit": "Volledig scherm sluiten",
+		"fullscreenBrowser": "Druk op {key} om volledig scherm te sluiten",
+		"typewriterEnable": "Typemachine-effect inschakelen",
+		"typewriterDisable": "Typemachine-effect uitschakelen",
+		"typewriterEnabled": "Typemachine-effect ingeschakeld",
+		"typewriterDisabled": "Typemachine-effect uitgeschakeld",
+		"volume": "Volume",
+		"muted": "Geluid uit",
+		"mute": "Geluid uitzetten",
+		"unmute": "Geluid aanzetten",
+		"log": "Geschiedenis",
+		"autoplay": "Automatisch afspelen",
+		"autoplayEnable": "Automatisch afspelen inschakelen",
+		"autoplayDisable": "Automatisch afspelen uitschakelen",
+		"autoplaySpeed": "Leessnelheid",
+		"autoplaySpeedVerySlow": "Zeer langzaam",
+		"autoplaySpeedSlow": "Langzaam",
+		"autoplaySpeedNormal": "Normaal",
+		"autoplaySpeedFast": "Snel",
+		"autoplaySpeedVeryFast": "Zeer snel",
+		"autoplayProgress": "Voortgangsbalk",
+		"autoplayProgressShow": "Voortgangsbalk tonen",
+		"autoplayProgressHide": "Voortgangsbalk verbergen",
+		"more": "Meer"
+	},
+	"startGate": {
+		"start": "Start",
+		"clickToStart": "Klik om te beginnen",
+		"continueTitle": "Doorgaan?",
+		"resumeFrom": "Hervatten vanaf {checkpoint}?",
+		"checkpointNamed": "het checkpoint \"{name}\"",
+		"lastCheckpoint": "je laatste checkpoint",
+		"continue": "Doorgaan",
+		"restart": "Opnieuw beginnen"
+	},
+	"log": {
+		"title": "Eerdere dialogen"
+	},
+	"credits": {},
+	"pause": {
+		"checkpoints": "Checkpoints",
+		"checkpointFallback": "Checkpoint {number}",
+		"checkpointLocked": "Checkpoint nog niet ontgrendeld",
+		"openMenu": "Hoofdstukmenu openen"
+	},
+	"endScreen": {
+		"theEnd": "Einde",
+		"share": "Delen",
+		"credits": "Credits",
+		"backToMenu": "Terug naar menu",
+		"nextChapter": "Volgend hoofdstuk",
+		"copied": "Gekopieerd!",
+		"copyFailed": "Kopiëren mislukt"
+	},
+	"toast": {
+		"checkpointUnlocked": "Checkpoint ontgrendeld: {name}"
+	},
+	"share": {
+		"text": "Ik heb zojuist “{chapter}” afgerond\n\n{url}"
+	},
+	"reset": {
+		"tooltip": "Voortgang wissen",
+		"title": "Voortgang wissen?",
+		"desc": "Alle opgeslagen voortgang en ontgrendelde checkpoints worden gewist.",
+		"confirm": "Wissen",
+		"cancel": "Annuleren"
+	},
+	"language": {
+		"title": "Selecteer taal",
+		"tooltip": "Taal"
+	},
+	"errors": {
+		"networkTitle": "Netwerkfout",
+		"networkDesc": "Kon het volgende deel van het verhaal niet laden. Controleer je verbinding en probeer het opnieuw.",
+		"retry": "Opnieuw proberen",
+		"title": "Er ging iets mis",
+		"desc": "Het verhaal kon niet verder. Probeer het opnieuw en laat het de maker weten als het blijft gebeuren.",
+		"details": "Details",
+		"copy": "Kopiëren"
+	},
+	"madeWith": "Gemaakt met",
+	"close": "Sluiten",
+	"orientation": "Draai je apparaat naar liggend om te spelen.",
+	"alt": {
+		"character": "Personage",
+		"character1": "Personage 1",
+		"character2": "Personage 2",
+		"storyImage": "Verhaalafbeelding",
+		"titleImage": "Titelafbeelding",
+		"gameLogo": "Gamelogo"
+	},
+	"cookies": {
+		"tooltip": "Cookie-instellingen"
+	}
+}

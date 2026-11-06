@@ -1,0 +1,7 @@
+{
+  "name": "Starter",
+  "author": "Ken Nisaka",
+  "version": "1.0.0",
+  "description": "A blank skin to copy. It changes nothing until you edit it.",
+  "requires": "2.0"
+}

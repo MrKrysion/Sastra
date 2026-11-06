@@ -1,0 +1,19 @@
+{
+  "name": "Paper",
+  "author": "Ken Nisaka",
+  "version": "1.0.0",
+  "description": "A printed novel: warm paper, serif type, a table of contents, and turned-down corners.",
+  "requires": "2.0",
+  "settings": {
+    "paperGrain": {
+      "label": "Paper texture",
+      "type": "boolean",
+      "default": true
+    },
+    "crookedPlates": {
+      "label": "Slightly crooked avatars",
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

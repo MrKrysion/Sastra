@@ -1,0 +1,38 @@
+[
+  {
+    "id": "paper",
+    "name": "Paper",
+    "description": "A printed novel: warm paper, serif type, a table of contents, and turned-down corners.",
+    "version": "1.0.0",
+    "preview": "preview.webp",
+    "files": [
+      "README.md",
+      "skin.css",
+      "skin.json"
+    ]
+  },
+  {
+    "id": "pastel",
+    "name": "Pastel",
+    "description": "Candy colours, sticker avatars, washi tape, and puffy buttons.",
+    "version": "1.0.0",
+    "preview": "preview.webp",
+    "files": [
+      "README.md",
+      "skin.css",
+      "skin.json"
+    ]
+  },
+  {
+    "id": "retro-desktop",
+    "name": "Retro Desktop",
+    "description": "A nineties computer: bevelled windows, a taskbar, a boot screen, and dialogue in title-barred windows.",
+    "version": "1.0.0",
+    "preview": "preview.webp",
+    "files": [
+      "README.md",
+      "skin.css",
+      "skin.json"
+    ]
+  }
+]

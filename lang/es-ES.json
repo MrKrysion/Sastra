@@ -1,0 +1,101 @@
+{
+	"a11y": {
+		"dialogue": "{name} dice: {text}"
+	},
+	"controls": {
+		"fullscreenEnter": "Pantalla completa",
+		"fullscreenExit": "Salir de pantalla completa",
+		"fullscreenBrowser": "Pulsa {key} para salir de la pantalla completa",
+		"typewriterEnable": "Activar efecto de máquina de escribir",
+		"typewriterDisable": "Desactivar efecto de máquina de escribir",
+		"typewriterEnabled": "Efecto de máquina de escribir activado",
+		"typewriterDisabled": "Efecto de máquina de escribir desactivado",
+		"volume": "Volumen",
+		"muted": "Silenciado",
+		"mute": "Silenciar",
+		"unmute": "Activar sonido",
+		"log": "Historial",
+		"autoplay": "Avance automático",
+		"autoplayEnable": "Activar avance automático",
+		"autoplayDisable": "Desactivar avance automático",
+		"autoplaySpeed": "Velocidad de lectura",
+		"autoplaySpeedVerySlow": "Muy lenta",
+		"autoplaySpeedSlow": "Lenta",
+		"autoplaySpeedNormal": "Normal",
+		"autoplaySpeedFast": "Rápida",
+		"autoplaySpeedVeryFast": "Muy rápida",
+		"autoplayProgress": "Barra de progreso",
+		"autoplayProgressShow": "Mostrar barra de progreso",
+		"autoplayProgressHide": "Ocultar barra de progreso",
+		"more": "Más"
+	},
+	"startGate": {
+		"start": "Empezar",
+		"clickToStart": "Haz clic para empezar",
+		"continueTitle": "¿Continuar?",
+		"resumeFrom": "¿Reanudar desde {checkpoint}?",
+		"checkpointNamed": "el punto de control «{name}»",
+		"lastCheckpoint": "tu último punto de control",
+		"continue": "Continuar",
+		"restart": "Reiniciar"
+	},
+	"log": {
+		"title": "Historial de diálogos"
+	},
+	"credits": {},
+	"pause": {
+		"checkpoints": "Puntos de control",
+		"checkpointFallback": "Punto de control {number}",
+		"checkpointLocked": "Punto de control no desbloqueado",
+		"openMenu": "Abrir menú del capítulo"
+	},
+	"endScreen": {
+		"theEnd": "Fin",
+		"share": "Compartir",
+		"credits": "Créditos",
+		"backToMenu": "Volver al menú",
+		"nextChapter": "Capítulo siguiente",
+		"copied": "¡Copiado!",
+		"copyFailed": "No se pudo copiar"
+	},
+	"toast": {
+		"checkpointUnlocked": "Punto de control desbloqueado: {name}"
+	},
+	"share": {
+		"text": "Acabo de terminar «{chapter}»\n\n{url}"
+	},
+	"reset": {
+		"tooltip": "Borrar progreso",
+		"title": "¿Borrar progreso?",
+		"desc": "Se borrará todo el progreso guardado y los puntos de control desbloqueados.",
+		"confirm": "Borrar",
+		"cancel": "Cancelar"
+	},
+	"language": {
+		"title": "Seleccionar idioma",
+		"tooltip": "Idioma"
+	},
+	"errors": {
+		"networkTitle": "Error de red",
+		"networkDesc": "No se ha podido cargar la siguiente parte de la historia. Comprueba tu conexión y vuelve a intentarlo.",
+		"retry": "Reintentar",
+		"title": "Algo ha salido mal",
+		"desc": "La historia no ha podido continuar. Vuelve a intentarlo y, si sigue pasando, avisa a quien la creó.",
+		"details": "Detalles",
+		"copy": "Copiar"
+	},
+	"madeWith": "Creado con",
+	"close": "Cerrar",
+	"orientation": "Gira el dispositivo en horizontal para jugar.",
+	"alt": {
+		"character": "Personaje",
+		"character1": "Personaje 1",
+		"character2": "Personaje 2",
+		"storyImage": "Imagen de la historia",
+		"titleImage": "Imagen del título",
+		"gameLogo": "Logotipo del juego"
+	},
+	"cookies": {
+		"tooltip": "Ajustes de cookies"
+	}
+}

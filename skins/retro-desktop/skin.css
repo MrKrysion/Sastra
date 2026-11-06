@@ -1,0 +1,791 @@
+/*
+  Retro Desktop, a skin for Sastra 2.0.
+  A nineties computer: a boot screen, a taskbar, and dialogue in windows.
+  Its colours and settings are listed in README.md.
+*/
+
+:root {
+	--face: var(--color-panel-bg);
+	--hi: color-mix(in srgb, var(--face) 12%, #fff);
+	--light: color-mix(in srgb, var(--face) 65%, #fff);
+	--lo: color-mix(in srgb, var(--face) 66%, #000);
+	--dark: color-mix(in srgb, var(--face) 8%, #000);
+	--raised: inset -1px -1px 0 var(--dark), inset 1px 1px 0 var(--hi), inset -2px -2px 0 var(--lo), inset 2px 2px 0 var(--light);
+	--sunken: inset 1px 1px 0 var(--lo), inset -1px -1px 0 var(--hi), inset 2px 2px 0 var(--dark), inset -2px -2px 0 var(--light);
+	--color-titlebar-end: color-mix(in srgb, var(--color-accent) 60%, #2fb4ff);
+	--titlebar: linear-gradient(90deg, var(--color-accent), var(--color-titlebar-end));
+	--win-btns: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='52' height='14' shape-rendering='crispEdges'><g id='b'><rect width='16' height='14' fill='%23000'/><rect width='15' height='13' fill='%23fff'/><rect x='1' y='1' width='14' height='12' fill='%23808080'/><rect x='1' y='1' width='13' height='11' fill='%23c0c0c0'/></g><use href='%23b' x='18'/><use href='%23b' x='36'/><rect x='4' y='9' width='6' height='2'/><path d='M21 3h9v8h-9zM22 5v5h7V5z' fill-rule='evenodd'/><path d='M40 3h2l2 2 2-2h2v1l-3 3 3 3v1h-2l-2-2-2 2h-2v-1l3-3-3-3z'/></svg>");
+	--cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='24' shape-rendering='crispEdges'><path d='M1 1v17l4-4 3 7h3l-3-7h6z' fill='white' stroke='black'/></svg>") 1 1;
+	--dither: conic-gradient(rgba(0, 0, 0, .75) 25%, transparent 0 50%, rgba(0, 0, 0, .75) 0 75%, transparent 0) 0 0 / 4px 4px;
+	--halftone: conic-gradient(var(--hi) 25%, var(--face) 0 50%, var(--hi) 0 75%, var(--face) 0) 0 0 / 2px 2px;
+
+	--font-body: Tahoma, "MS Sans Serif", Geneva, "DejaVu Sans", Verdana, sans-serif;
+
+	--color-accent: #000080;
+	--color-on-accent: #fff;
+	--color-text: #000;
+	--color-muted-text: #444;
+	--color-page-bg: #008080;
+	--color-panel-bg: #c0c0c0;
+	--color-dialogue-bg: #fff;
+	--color-success: #008000;
+	--color-error: #a00000;
+
+	--accent-hover: color-mix(in srgb, var(--color-accent) 84%, #fff);
+	--ink-2: var(--color-text);
+	--soft: transparent;
+	--soft-2: color-mix(in srgb, var(--color-accent) 14%, transparent);
+	--line: var(--lo);
+	--chrome-bg: var(--face);
+	--chrome-hover: var(--face);
+	--art-surface: var(--face);
+	--art-surface-hover: var(--face);
+	--dim: linear-gradient(180deg, color-mix(in srgb, var(--color-accent) 92%, transparent), color-mix(in srgb, color-mix(in srgb, var(--color-accent) 35%, #000) 92%, transparent));
+	--backdrop: var(--dither);
+	--tip-bg: #ffffe1;
+	--tip-fg: #000;
+
+	--r-pill: 0px;
+	--r-modal: 0px;
+	--r-card: 0px;
+	--r-menu: 0px;
+	--r-pop: 0px;
+	--r-row: 0px;
+	--r-tip: 0px;
+
+	--bar: 36px;
+	--bar-icon: 17px;
+	--bar-gap: 3px;
+	--bar-edge: 4px;
+	--taskbar: calc(var(--bar) + 2 * var(--bar-edge));
+
+	--shadow-sm: none;
+	--shadow-md: 3px 3px 0 rgba(0, 0, 0, .6);
+	--shadow-lg: 4px 4px 0 rgba(0, 0, 0, .6);
+
+	--t-fast: 0s;
+	--t-menu: 0s;
+	--t-exit: 0s;
+	--t-toast: 0s;
+	--t-modal: 0s;
+
+	--dialogue-position-top: 16px;
+	--dialogue-position-bottom: calc(var(--taskbar) + 14px);
+}
+
+.chapter-select { --menu-fade: none; }
+
+body { cursor: var(--cursor), default; }
+
+::selection { background: var(--color-accent); color: var(--color-on-accent); }
+
+:focus-visible { outline: 1px dotted #000; outline-offset: -5px; }
+
+/* Real, chunky scrollbars. */
+.scrollbar,
+.modal-body,
+.pause-list {
+	scrollbar-width: auto;
+	scrollbar-color: auto;
+}
+
+::-webkit-scrollbar { width: 17px; height: 17px; }
+::-webkit-scrollbar-track { background: var(--halftone); }
+::-webkit-scrollbar-thumb { background: var(--face); box-shadow: var(--raised); }
+
+/* Windows: dialogue, narration, and conversation. */
+.dialogue-content,
+.conv-dialogue-box,
+.narration-screen {
+	contain: layout;
+	background: var(--face);
+	color: var(--color-text);
+	border-radius: 0;
+	box-shadow: var(--raised), 5px 5px 0 rgba(0, 0, 0, .55);
+	justify-content: flex-start;
+	padding: calc(4 * var(--scene-px));
+}
+
+.dialogue-content,
+.conv-dialogue-box { position: relative; }
+
+/* Keeps both avatars on screen on a phone held sideways. */
+.conv-dialogue-box { max-width: min(calc(640 * var(--scene-px)), 100vw - calc(390 * var(--scene-px))); }
+
+/*
+  Windows cut straight to the next one; backgrounds, images and title screens keep their
+  fades. The engine hides a scene about 200ms before showing the next (TIMINGS.sceneGap).
+  Without the delay here, the window would blink out for that long on every line.
+*/
+body:not([data-skin-snap-windows="false"]) :is(.single-dialogue, .multi-dialogue, .conv-dialogue, .narration-screen) { transition: opacity 0s linear .21s; }
+
+body:not([data-skin-snap-windows="false"]) :is(.single-dialogue, .multi-dialogue, .conv-dialogue, .narration-screen).active,
+body:not([data-skin-snap-windows="false"]):is([data-scene="conversation"], [data-scene="title"]) :is(.single-dialogue, .multi-dialogue, .narration-screen) { transition: none; }
+
+/* The name is the window's title bar; the character's colour is the square beside it. */
+.character-name {
+	display: flex;
+	align-items: center;
+	gap: calc(8 * var(--scene-px));
+	min-height: calc(30 * var(--scene-px));
+	margin: 0;
+	padding: 0 calc(66 * var(--scene-px)) 0 calc(7 * var(--scene-px));
+	background: var(--win-btns) right calc(4 * var(--scene-px)) center / auto calc(16 * var(--scene-px)) no-repeat, var(--titlebar);
+	-webkit-text-fill-color: var(--color-on-accent);
+	font-size: calc(17 * var(--scene-px));
+	font-weight: 700;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.character-name::before {
+	content: '';
+	flex: none;
+	width: calc(14 * var(--scene-px));
+	height: calc(14 * var(--scene-px));
+	background: currentColor;
+	box-shadow: inset 0 0 0 1px #fff;
+}
+
+/* The text sits in a sunken white field, like a text box. */
+.dialogue-text,
+.narration-text {
+	flex: 1;
+	margin-top: calc(4 * var(--scene-px));
+	padding: calc(14 * var(--scene-px)) calc(18 * var(--scene-px));
+	background: var(--color-dialogue-bg);
+	box-shadow: var(--sunken);
+	color: var(--color-text);
+	font-size: calc(20 * var(--scene-px));
+	line-height: 1.5;
+}
+
+/* Narration: a window with a blank title bar. */
+.narration-screen { text-align: start; }
+
+.narration-screen::before {
+	content: '';
+	display: block;
+	min-height: calc(30 * var(--scene-px));
+	line-height: calc(30 * var(--scene-px));
+	padding: 0 calc(66 * var(--scene-px)) 0 calc(7 * var(--scene-px));
+	background: var(--win-btns) right calc(4 * var(--scene-px)) center / auto calc(16 * var(--scene-px)) no-repeat, var(--titlebar);
+	color: var(--color-on-accent);
+	font-size: calc(17 * var(--scene-px));
+	font-weight: 700;
+}
+
+.narration-text { font-family: "Courier New", Courier, monospace; font-weight: 700; }
+
+/* Avatars: a picture in a bevelled frame. */
+.avatar,
+.conv-avatar {
+	border-radius: 0;
+	padding: calc(6 * var(--scene-px));
+	background: var(--face);
+	box-shadow: var(--raised), 5px 5px 0 rgba(0, 0, 0, .55);
+	transition: none;
+}
+
+.conv-avatar.dimmed {
+	opacity: 1;
+	transform: none;
+	filter: grayscale(1) contrast(1.3) brightness(.8);
+}
+
+/* Taskbar: the chapter button is the start button, the controls are the tray. */
+body.game-active:not(.controls-hidden)::after {
+	content: '';
+	position: fixed;
+	inset: auto 0 0;
+	height: var(--taskbar);
+	background: var(--face);
+	box-shadow: inset 0 1px 0 var(--light), inset 0 2px 0 var(--hi);
+	z-index: 90;
+	pointer-events: none;
+}
+
+.chapter-info,
+.top-controls {
+	top: auto;
+	bottom: var(--bar-edge);
+}
+
+.chapter-info,
+.control-button {
+	color: var(--color-text);
+	box-shadow: var(--raised);
+	transition: none;
+	will-change: auto;
+}
+
+.chapter-info {
+	font-size: .86rem;
+	padding: 0 14px;
+	max-width: 42vw;
+}
+
+.control-button.pill { padding: 0 14px; font-size: .86rem; }
+
+.control-button:hover,
+.chapter-info.checkpoints-enabled:hover { transform: none; background: var(--face); }
+
+.control-button:active,
+.chapter-info.checkpoints-enabled:active,
+.control-button.active,
+.control-button.active:hover {
+	transform: none;
+	box-shadow: var(--sunken);
+	background: var(--halftone);
+	color: var(--color-text);
+}
+
+/* Pop-ups open upwards from the taskbar. */
+.volume-panel,
+.autoplay-panel,
+.more-panel {
+	top: auto;
+	bottom: calc(var(--bar) + 8px);
+	transform-origin: bottom right;
+	box-shadow: var(--raised), var(--shadow-md);
+	padding: 8px 12px;
+}
+
+.volume-panel { padding-inline: 8px 12px; }
+
+/* Buttons */
+.ui-button,
+.ui-button.secondary,
+.pause-left .ui-button.secondary:not(.copied, .copy-failed) {
+	height: 40px;
+	padding: 0 20px;
+	border: 0;
+	background: var(--face);
+	color: var(--color-text);
+	box-shadow: var(--raised);
+	font-size: .95rem;
+	font-weight: 400;
+	transition: none;
+}
+
+/* The main button is the default one, with its black outline. */
+.ui-button:not(.secondary, .danger-solid) {
+	box-shadow: inset 0 0 0 1px #000, inset -2px -2px 0 var(--dark), inset 2px 2px 0 var(--hi), inset -3px -3px 0 var(--lo), inset 3px 3px 0 var(--light);
+	font-weight: 700;
+}
+
+.ui-button.danger-solid { color: var(--color-error); font-weight: 700; }
+
+.ui-button.secondary.copied,
+.ui-button.copied { background: var(--face); color: var(--color-success); }
+
+.ui-button.secondary.copy-failed,
+.ui-button.copy-failed { background: var(--face); color: var(--color-error); }
+
+@media (hover: hover) {
+	.ui-button:hover,
+	.ui-button.secondary:hover,
+	.ui-button.danger-solid:hover,
+	.pause-left .ui-button.secondary:not(.copied, .copy-failed):hover { background: var(--face); transform: none; }
+}
+
+.ui-button:active,
+.ui-button.secondary:active,
+.pause-left .ui-button.secondary:not(.copied, .copy-failed):active {
+	transform: none;
+	box-shadow: var(--sunken);
+	padding: 2px 19px 0 21px;
+}
+
+.mute-toggle {
+	width: 30px;
+	height: 28px;
+	border-radius: 0;
+	background: var(--face);
+	color: var(--color-text);
+	box-shadow: var(--raised);
+	transition: none;
+}
+
+.mute-toggle:hover { background: var(--face); color: var(--color-text); }
+.mute-toggle:active { transform: none; box-shadow: var(--sunken); }
+
+.close-button {
+	width: 24px;
+	height: 22px;
+	background: var(--face);
+	color: var(--color-text);
+	box-shadow: var(--raised);
+}
+
+.close-button .icon { width: 11px; height: 11px; }
+.close-button:hover { background: var(--face); color: var(--color-text); }
+.close-button:active { transform: none; box-shadow: var(--sunken); }
+
+/* Pop-up windows */
+.modal-content {
+	padding: 4px;
+	background: var(--face);
+	box-shadow: var(--raised), var(--shadow-lg);
+	transition: none;
+}
+
+.modal-head {
+	min-height: 32px;
+	padding: 0 4px 0 8px;
+	background: var(--titlebar);
+}
+
+.modal-title {
+	gap: 8px;
+	font-size: .95rem;
+	letter-spacing: 0;
+	color: var(--color-on-accent);
+}
+
+.modal-title .icon { width: 16px; height: 16px; color: var(--color-on-accent); }
+
+.modal-body { margin-top: 6px; padding: 12px 16px 16px; color: var(--color-text); }
+
+.modal-list .modal-body,
+.credits-body {
+	background: var(--color-dialogue-bg);
+	box-shadow: var(--sunken);
+}
+
+.modal-foot {
+	padding: 12px 8px 8px;
+	border-top: 0;
+	background: transparent;
+}
+
+.log-entry { border-bottom: 1px dotted var(--lo); }
+
+.log-entry .character-name {
+	display: block;
+	min-height: 0;
+	padding: 0;
+	background: none;
+	font-size: .92rem;
+	-webkit-text-fill-color: var(--color-accent);
+	white-space: normal;
+}
+
+.log-entry .character-name::before { display: none; }
+
+.log-avatar { border-radius: 0; box-shadow: var(--raised); padding: 2px; background: var(--face); }
+
+/* Lists: the highlight is sharp, with no animation. */
+.row {
+	min-height: 34px;
+	padding: 3px 10px;
+	font-size: .95rem;
+	transition: none;
+}
+
+.row-title,
+.row-num { font-weight: 400; }
+
+@media (hover: hover) {
+	.row:not(:disabled):hover,
+	.pause-list .row:not(:disabled):not(.current):hover {
+		background: var(--color-accent);
+		color: var(--color-on-accent);
+	}
+	.row:not(:disabled):hover :is(.row-num, .row-meta) { color: inherit; }
+}
+
+/* Slider and checkbox */
+.slider-wave { display: none; }
+
+/* The engine clears the fill while the wave is drawn, and this skin has no wave. */
+.slider { --fill-color: var(--color-accent) !important; }
+
+.slider.held { --track: 6px; --thumb: 20px; }
+
+.slider-ticks span { border-radius: 0; background: var(--lo); }
+
+.slider::-webkit-slider-runnable-track {
+	height: 4px;
+	background: var(--color-dialogue-bg);
+	box-shadow: inset 1px 1px 0 var(--lo), inset -1px -1px 0 var(--hi);
+	border-radius: 0;
+}
+
+.slider::-webkit-slider-thumb {
+	width: 12px;
+	height: 22px;
+	margin-top: -9px;
+	border-radius: 0;
+	background: var(--face);
+	box-shadow: var(--raised);
+}
+
+.slider::-moz-range-track { height: 4px; background: var(--color-dialogue-bg); border-radius: 0; }
+.slider::-moz-range-progress { height: 4px; border-radius: 0; background: transparent; }
+.slider::-moz-range-thumb { width: 12px; height: 22px; border-radius: 0; background: var(--face); box-shadow: var(--raised); }
+
+/* The switch becomes a checkbox. */
+.switch,
+.switch[aria-checked="true"] {
+	width: 22px;
+	height: 22px;
+	background: var(--color-dialogue-bg);
+	box-shadow: var(--sunken);
+}
+
+.switch::after,
+.switch:active::after,
+.switch[aria-checked="true"]::after,
+.switch[aria-checked="true"]:active::after {
+	top: 4px;
+	left: 4px;
+	width: 14px;
+	height: 14px;
+	border-radius: 0;
+	transform: none;
+	transition: none;
+	background: transparent;
+}
+
+.switch[aria-checked="true"]::after,
+.switch[aria-checked="true"]:active::after {
+	background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' shape-rendering='crispEdges'><path d='M2 6h2v2h2V6h2V4h2V2h2v4h-2v2H8v2H6v2H4v-2H2z'/></svg>") center / contain no-repeat;
+}
+
+/* Start screen: the machine boots. Decorative lines, so nothing here needs translating. */
+.start-gate {
+	background: #000;
+	color: #c0c0c0;
+	align-items: flex-start;
+	justify-content: flex-start;
+	text-align: start;
+	font-family: "Courier New", Courier, monospace;
+	font-weight: 700;
+}
+
+.start-gate::before {
+	content: 'SASTRA BIOS 2.0\A 640K OK\A \A C:\\> GAME.EXE\A';
+	position: absolute;
+	top: 28px;
+	left: 28px;
+	white-space: pre;
+	font-size: clamp(.8rem, 2.4vh, 1rem);
+	line-height: 1.5;
+	color: #c0c0c0;
+}
+
+.start-gate > * {
+	margin-top: calc(clamp(.8rem, 2.4vh, 1rem) * 6.5);
+	align-items: flex-start;
+	text-align: start;
+}
+
+.start-title,
+.start-gate:not(.start-gate--resume) .start-title {
+	font-family: "Courier New", Courier, monospace;
+	font-size: clamp(1rem, 3vh, 1.25rem);
+	letter-spacing: 0;
+	line-height: 1.5;
+	color: #fff;
+}
+
+.start-gate:not(.start-gate--resume) .start-title::after {
+	content: '';
+	display: inline-block;
+	width: .6em;
+	height: 1.05em;
+	margin-left: .3em;
+	vertical-align: -.15em;
+	background: #fff;
+	animation: retro-blink 1s steps(2, jump-none) infinite;
+}
+
+@keyframes retro-blink {
+	from { opacity: 1; }
+	to { opacity: 0; }
+}
+
+.start-subtitle { color: #c0c0c0; font-size: 1rem; }
+
+/* bootScreen: false swaps the boot text for a plain screen on the desktop colour. */
+body[data-skin-boot-screen="false"] .start-gate {
+	background: var(--color-page-bg);
+	align-items: center;
+	justify-content: center;
+	font-family: var(--font-ui);
+}
+
+body[data-skin-boot-screen="false"] .start-gate::before,
+body[data-skin-boot-screen="false"] .start-gate .start-title::after { content: none; }
+
+body[data-skin-boot-screen="false"] .start-gate > * {
+	margin-top: 0;
+	align-items: center;
+	text-align: center;
+}
+
+body[data-skin-boot-screen="false"] .start-gate .start-title,
+body[data-skin-boot-screen="false"] .start-gate .start-subtitle { font-family: var(--font-ui); }
+
+/* Title and end screens: the blue of an old installer. */
+.screen-title {
+	font-family: "Times New Roman", Times, serif;
+	font-style: italic;
+	color: var(--color-on-accent);
+	letter-spacing: 0;
+	text-shadow: calc(4 * var(--scene-px)) calc(4 * var(--scene-px)) 0 #000;
+}
+
+.screen-subtitle {
+	font-family: "Times New Roman", Times, serif;
+	color: var(--color-on-accent);
+	text-shadow: calc(2 * var(--scene-px)) calc(2 * var(--scene-px)) 0 #000;
+}
+
+/* Chapter menu: a window on the desktop, with chapters as a file list. */
+.chapter-select { font-size: clamp(14px, 8px + .7vw, 16px); }
+
+.chapter-select--few { font-size: clamp(15px, 9px + .7vw, 17px); }
+
+.chapter-select-content {
+	width: min(calc(100% - 32px), max(30em, 42vw));
+	min-height: 0;
+	margin: 1.5em 0 1.5em clamp(16px, 4vw, 56px);
+	padding: calc(34px + .9em) 1.1em 1.1em;
+	gap: .8em;
+	background: var(--face);
+	box-shadow: var(--raised), 6px 6px 0 rgba(0, 0, 0, .55);
+	color: var(--color-text);
+}
+
+.chapter-select-content::before {
+	content: '';
+	position: absolute;
+	inset: 4px 4px auto;
+	height: 30px;
+	line-height: 30px;
+	padding-left: 8px;
+	background: var(--win-btns) right 4px center / auto 16px no-repeat, var(--titlebar);
+	color: var(--color-on-accent);
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.game-logo { margin-bottom: .5em; }
+
+.menu-title {
+	font-size: 2em;
+	letter-spacing: 0;
+}
+
+.menu-author { font-size: 1em; }
+
+.menu-synopsis {
+	font-size: 1em;
+	line-height: 1.45;
+	color: var(--color-text);
+}
+
+.menu-play { align-self: flex-start; height: 2.9em; padding: 0 1.5em; font-size: 1em; }
+.menu-play:active { padding: 2px calc(1.5em - 1px) 0 calc(1.5em + 1px); }
+
+.chapter-buttons {
+	gap: 0;
+	padding: 4px;
+	background: var(--color-dialogue-bg);
+	box-shadow: var(--sunken);
+}
+
+.chapter-button,
+.chapter-button:not(:has(.chapter-progress)) {
+	grid-template-columns: 22px minmax(0, 1fr) auto;
+	column-gap: .55em;
+	min-height: 2.3em;
+	padding: .2em .5em;
+	border-radius: 0;
+	background: transparent;
+	color: var(--color-text);
+	transition: none;
+}
+
+/* A little document icon in front of each chapter. */
+.chapter-button::before {
+	content: '';
+	grid-column: 1;
+	grid-row: 1;
+	width: 18px;
+	height: 20px;
+	background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 20' shape-rendering='crispEdges'><path d='M2.5.5h9l4 4v15h-13z' fill='white' stroke='black'/><path d='M11.5.5v4h4' fill='%23c0c0c0' stroke='black'/><path d='M5 8h8M5 11h8M5 14h6' stroke='%23000080'/></svg>") center / contain no-repeat;
+}
+
+.chapter-button .row-title {
+	grid-column: 2;
+	grid-row: 1;
+	font-weight: 400;
+	font-size: 1em;
+}
+
+.chapter-button .row-meta,
+.chapter-button:has(.chapter-progress) .row-meta {
+	grid-column: 3;
+	grid-row: 1;
+	color: var(--color-text);
+}
+
+.chapter-button .row-meta .icon { color: var(--color-success); }
+
+/* The progress bar is the classic row of blocks. */
+.chapter-progress {
+	grid-column: 2 / -1;
+	height: 12px;
+	margin: .15em 0 .35em;
+	padding: 2px;
+	border-radius: 0;
+	background: var(--face);
+	box-shadow: var(--sunken);
+}
+
+.chapter-progress::before {
+	border-radius: 0;
+	animation: none;
+	background: repeating-linear-gradient(90deg, var(--color-accent) 0 7px, transparent 7px 9px);
+}
+
+@media (hover: hover) {
+	.chapter-button:hover {
+		background: var(--color-accent);
+		color: var(--color-on-accent);
+		transform: none;
+	}
+	.chapter-button:hover .row-meta { color: var(--color-on-accent); }
+}
+
+/* Pause menu: everything behind goes dithered, like a system shutting down. */
+.pause-menu {
+	background: var(--dither);
+	backdrop-filter: none;
+	-webkit-backdrop-filter: none;
+	--pause-step: 34px;
+}
+
+.pause-left,
+.pause-right {
+	background: var(--face);
+	box-shadow: var(--raised), var(--shadow-lg);
+}
+
+.pause-left {
+	padding: 4px 4px 16px;
+	gap: 6px;
+}
+
+.pause-left .ui-button { width: calc(100% - 28px); }
+
+.pause-chapter {
+	order: -1;
+	align-self: stretch;
+	margin: 0 0 12px;
+	padding: 6px 66px 6px 8px;
+	background: var(--win-btns) right 4px center / auto 16px no-repeat, var(--titlebar);
+	color: var(--color-on-accent);
+	font-family: var(--font-ui);
+	font-size: .95rem;
+	letter-spacing: 0;
+	text-align: start;
+}
+
+.pause-assets {
+	bottom: calc(var(--taskbar) + 6px);
+	padding: 3px 8px;
+	background: var(--tip-bg);
+	color: var(--tip-fg);
+	border: 1px solid #000;
+}
+
+.pause-right {
+	padding: 4px;
+	gap: 4px;
+}
+
+.pause-right-head {
+	padding: 6px 8px;
+	background: var(--titlebar);
+	scrollbar-gutter: auto;
+}
+
+.pause-right-head .eyebrow {
+	color: var(--color-on-accent);
+	font-size: .95rem;
+}
+
+.pause-list {
+	padding: 4px;
+	background: var(--color-dialogue-bg);
+	box-shadow: var(--sunken);
+	scrollbar-gutter: auto;
+	-webkit-mask-image: none;
+	mask-image: none;
+	max-height: min(66vh, 480px);
+}
+
+/* Notifications: small system windows that rise from the taskbar. Tooltips: pale yellow. */
+/*
+  The engine puts the newest toast first. Reversing the column keeps it next to the taskbar
+  and pushes older ones up. It also leaves each toast's offset inside the stack unchanged, so
+  the engine's glide doesn't fire and the stack snaps, like the rest of this skin.
+*/
+.toast-stack--left,
+.toast-stack--right {
+	top: auto;
+	bottom: calc(var(--taskbar) + 8px);
+	flex-direction: column-reverse;
+}
+
+:is(body.controls-hidden, body:not(.game-active)) :is(.toast-stack--left, .toast-stack--right) {
+	top: auto;
+	bottom: 12px;
+}
+
+.toast,
+.toast.success,
+.toast.error {
+	background: var(--face);
+	color: var(--color-text);
+	box-shadow: var(--raised), var(--shadow-md);
+	font-weight: 400;
+	animation: none;
+}
+
+.toast .icon { color: var(--color-accent); }
+.toast.success .icon { color: var(--color-success); }
+.toast.error .icon { color: var(--color-error); }
+
+.tooltip {
+	border: 1px solid #000;
+	font-weight: 400;
+	animation: none;
+}
+
+@media (max-height: 520px) {
+	:root { --bar: 34px; --bar-edge: 3px; }
+	.ui-button,
+	.ui-button.secondary,
+	.pause-left .ui-button.secondary:not(.copied, .copy-failed) { height: 34px; }
+	.pause-left { padding-bottom: 8px; }
+	.pause-chapter { margin-bottom: 6px; font-size: .88rem; }
+	.pause-list { max-height: 60vh; }
+}
+
+@media (max-width: 600px) and (orientation: portrait) {
+	.chapter-select-content {
+		flex: none;
+		width: calc(100% - 20px);
+		margin: 10px;
+		padding: calc(34px + 1em) 1em 1em;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.start-title::after { animation: none !important; }
+}

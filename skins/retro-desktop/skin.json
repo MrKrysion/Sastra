@@ -1,0 +1,25 @@
+{
+  "name": "Retro Desktop",
+  "author": "Ken Nisaka",
+  "version": "1.0.0",
+  "description": "A nineties computer: bevelled windows, a taskbar, a boot screen, and dialogue in title-barred windows.",
+  "requires": "2.0",
+  "colors": {
+    "titlebarEnd": {
+      "label": "Right end of title bars",
+      "default": "#1348b3"
+    }
+  },
+  "settings": {
+    "bootScreen": {
+      "label": "Boot text on the start screen",
+      "type": "boolean",
+      "default": true
+    },
+    "snapWindows": {
+      "label": "Dialogue windows cut instead of fading",
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

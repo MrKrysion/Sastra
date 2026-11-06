@@ -1,0 +1,101 @@
+{
+	"a11y": {
+		"dialogue": "يقول {name}: {text}"
+	},
+	"controls": {
+		"fullscreenEnter": "وضع ملء الشاشة",
+		"fullscreenExit": "الخروج من وضع ملء الشاشة",
+		"fullscreenBrowser": "اضغط {key} للخروج من ملء الشاشة",
+		"typewriterEnable": "تفعيل تأثير الكتابة",
+		"typewriterDisable": "تعطيل تأثير الكتابة",
+		"typewriterEnabled": "تم تفعيل تأثير الكتابة",
+		"typewriterDisabled": "تم تعطيل تأثير الكتابة",
+		"volume": "مستوى الصوت",
+		"muted": "الصوت مكتوم",
+		"mute": "كتم الصوت",
+		"unmute": "إلغاء كتم الصوت",
+		"log": "السجل",
+		"autoplay": "التشغيل التلقائي",
+		"autoplayEnable": "تفعيل التشغيل التلقائي",
+		"autoplayDisable": "تعطيل التشغيل التلقائي",
+		"autoplaySpeed": "سرعة القراءة",
+		"autoplaySpeedVerySlow": "بطيئة جدًا",
+		"autoplaySpeedSlow": "بطيئة",
+		"autoplaySpeedNormal": "عادية",
+		"autoplaySpeedFast": "سريعة",
+		"autoplaySpeedVeryFast": "سريعة جدًا",
+		"autoplayProgress": "شريط التقدّم",
+		"autoplayProgressShow": "إظهار شريط التقدّم",
+		"autoplayProgressHide": "إخفاء شريط التقدّم",
+		"more": "المزيد"
+	},
+	"startGate": {
+		"start": "ابدأ",
+		"clickToStart": "انقر للبدء",
+		"continueTitle": "هل تريد المتابعة؟",
+		"resumeFrom": "هل تريد المتابعة من {checkpoint}؟",
+		"checkpointNamed": "نقطة الحفظ \"{name}\"",
+		"lastCheckpoint": "آخر نقطة حفظ لك",
+		"continue": "متابعة",
+		"restart": "إعادة البدء"
+	},
+	"log": {
+		"title": "سجل الحوار"
+	},
+	"credits": {},
+	"pause": {
+		"checkpoints": "نقاط الحفظ",
+		"checkpointFallback": "نقطة الحفظ {number}",
+		"checkpointLocked": "نقطة حفظ غير متاحة بعد",
+		"openMenu": "فتح قائمة الفصل"
+	},
+	"endScreen": {
+		"theEnd": "النهاية",
+		"share": "مشاركة",
+		"credits": "الاعتمادات",
+		"backToMenu": "العودة للقائمة",
+		"nextChapter": "الفصل التالي",
+		"copied": "تم النسخ!",
+		"copyFailed": "تعذّر النسخ"
+	},
+	"toast": {
+		"checkpointUnlocked": "تم فتح نقطة حفظ: {name}"
+	},
+	"share": {
+		"text": "لقد أنهيت للتو قراءة الفصل “{chapter}”\n\n{url}"
+	},
+	"reset": {
+		"tooltip": "حذف التقدم",
+		"title": "هل تريد حذف التقدم؟",
+		"desc": "سيؤدي هذا إلى حذف كل التقدم المحفوظ ونقاط الحفظ التي فتحتها.",
+		"confirm": "حذف",
+		"cancel": "إلغاء"
+	},
+	"language": {
+		"title": "اختر اللغة",
+		"tooltip": "اللغة"
+	},
+	"errors": {
+		"networkTitle": "خطأ في الشبكة",
+		"networkDesc": "تعذر تحميل الجزء التالي من القصة. يرجى التحقق من اتصالك والمحاولة مرة أخرى.",
+		"retry": "إعادة المحاولة",
+		"title": "حدث خطأ ما",
+		"desc": "تعذّر متابعة القصة. حاول مرة أخرى، وإذا تكرر الأمر فأخبر منشئ القصة.",
+		"details": "التفاصيل",
+		"copy": "نسخ"
+	},
+	"madeWith": "صُنع باستخدام",
+	"close": "إغلاق",
+	"orientation": "أدر جهازك إلى الوضع الأفقي للعب.",
+	"alt": {
+		"character": "شخصية",
+		"character1": "الشخصية الأولى",
+		"character2": "الشخصية الثانية",
+		"storyImage": "صورة القصة",
+		"titleImage": "صورة العنوان",
+		"gameLogo": "شعار اللعبة"
+	},
+	"cookies": {
+		"tooltip": "إعدادات ملفات تعريف الارتباط"
+	}
+}

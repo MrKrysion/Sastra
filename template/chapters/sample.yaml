@@ -4,15 +4,15 @@ characters:
 
   character:
     name: "Character"
-    color: "#b29bff"
+    color: "#ff006e"
     avatar: "avatars/avatar.webp"
 
 script:
 
   - bg: "backgrounds/background.webp"
 
-  - character: "Welcome to Sastra!"
+  - character: "Welcome to Sastra™!"
 
   - narration: |
       Start writing your own chapters.
-      See Sastra's Documentation to get started.
+      See Sastra™'s Documentation to get started.
