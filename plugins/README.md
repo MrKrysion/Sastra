@@ -14,4 +14,4 @@ plugins:
 
 Plugins need Sastra 2.0 or newer; each declares the engine version it needs and the game tells you if yours is older. How to write your own is in the [plugin guide](https://www.sastra.dev/docs/#plugin-api).
 
-They are released together with the engine, under the same licence (see `LICENSE` and `GAME-ASSET-EXCEPTION.txt` in the repository root). Copies for download are on the [Extras page](https://www.sastra.dev/extras).
+Each plugin has its own version, in its `SASTRA.plugin()` definition, and updates separately from the engine. They are under the same licence as the engine (see `LICENSE` and `GAME-ASSET-EXCEPTION.txt` in the repository root). Download them from the [Extras page](https://www.sastra.dev/extras).

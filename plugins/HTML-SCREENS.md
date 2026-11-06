@@ -2,7 +2,7 @@
 
 A guide to building an `.html` file that runs inside a Sastra visual novel through the `screen:` event. An HTML screen is any interactive page the story hands over to: a computer or phone desktop the player explores, a puzzle, a minigame. Follow every **must**. The template at the end already does most of this, so start from it.
 
-> The `screen:` event comes from the screens plugin, not the engine. Its source is `Plugins/sastra-screens.js` and it needs Sastra 2.0 or newer. Copy it into the game folder (e.g. `plugins/sastra-screens.js`) and list it in `config.yaml`:
+> The `screen:` event comes from the screens plugin, not the engine. Its source is `plugins/sastra-screens.js` and it needs Sastra 2.0 or newer. Copy it into the game folder (e.g. `plugins/sastra-screens.js`) and list it in `config.yaml`:
 >
 > ```yaml
 > plugins:
