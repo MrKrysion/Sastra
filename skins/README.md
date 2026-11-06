@@ -1,6 +1,6 @@
 # Skins
 
-The official Sastra skins. A skin is a folder with a `skin.css` that restyles the engine beyond theme colours and fonts. Copy the folder into your game and point to it in `config.yaml`:
+The official Sastra™ skins. A skin is a folder with a `skin.css` that restyles the engine beyond theme colours and fonts. Copy the folder into your game and point to it in `config.yaml`:
 
 ```yaml
 skin: skins/my-skin/

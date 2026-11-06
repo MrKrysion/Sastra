@@ -1,12 +1,13 @@
 NOT COVERED BY THE GPL
 
 The files below are NOT covered by the GNU GPL v3 (LICENSE) or the Game Data &
-Asset Exception (LICENSE-EXCEPTION.txt). Everything else in this repository is.
+Asset Exception (GAME-ASSET-EXCEPTION.txt). Everything else in this repository is.
 
 SASTRA LOGO AND FAVICON - COPYRIGHT AND TRADEMARK
 
   - template/logo.webp
   - template/favicon.webp
+  - docs/brand/*.svg (the logo with wordmark, shown in the README)
 
 Copyright (c) 2026 Ken "Krysion" Nisaka. All rights reserved. The Sastra name
 and logo are trademarks of Ken "Krysion" Nisaka.

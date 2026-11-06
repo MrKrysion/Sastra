@@ -11,7 +11,7 @@ Nothing is loaded from a third-party server at runtime.
 
 ## Not covered by the GPL
 
-- The Sastra logo and favicon are copyrighted and trademarked, and the skin preview pictures are all rights reserved. See [`ASSETS-LICENSE.txt`](ASSETS-LICENSE.txt).
+- The Sastra logo and favicon are copyrighted and trademarked, and the skin preview pictures are all rights reserved. See [`ASSETS-LICENSE.txt`](../ASSETS-LICENSE.txt).
 - The template's placeholder avatar and gradient backgrounds are free to use.
 
 ## Language packs

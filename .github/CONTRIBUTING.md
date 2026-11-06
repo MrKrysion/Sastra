@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for your interest. Sastra is a small project with one maintainer, and this page sets expectations so nobody's time is wasted.
+Thanks for your interest. Sastra™ is a small project with one maintainer, and this page sets expectations so nobody's time is wasted.
 
 ## Bugs and ideas: open an issue
 
@@ -13,11 +13,11 @@ Questions about *using* the engine belong in the [documentation](https://www.sas
 
 ## Translations
 
-The official plugins are in [`plugins/`](plugins/README.md) and the skins in [`skins/`](skins/README.md). The interface language packs are in [`lang/`](lang/README.md), and fixes and new languages are welcome as pull requests. A pack should say things the way a native speaker would, not translate the English word for word. The guide in `lang/README.md` explains how.
+The official plugins are in [`plugins/`](../plugins/README.md) and the skins in [`skins/`](../skins/README.md). The interface language packs are in [`lang/`](../lang/README.md), and fixes and new languages are welcome as pull requests. A pack should say things the way a native speaker would, not translate the English word for word. The guide in `lang/README.md` explains how.
 
 ## Code: talk first
 
-Please **open an issue before writing code**, unless the change is a one-line fix. The engine is a single file with strict conventions, and a pull request that doesn't fit them will be closed rather than reworked. Read [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) first.
+Please **open an issue before writing code**, unless the change is a one-line fix. The engine is a single file with strict conventions, and a pull request that doesn't fit them will be closed rather than reworked. Read [`docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md) first.
 
 If you do send a pull request:
 
@@ -31,7 +31,7 @@ If you do send a pull request:
 
 ## Licence of your contribution
 
-Sastra is licensed under the GPL-3.0-or-later with the Game Data & Asset Exception (see [`LICENSE`](LICENSE) and [`LICENSE-EXCEPTION.txt`](LICENSE-EXCEPTION.txt)).
+Sastra is licensed under the GPL-3.0-or-later with the Game Data & Asset Exception (see [`LICENSE`](../LICENSE) and [`GAME-ASSET-EXCEPTION.txt`](../GAME-ASSET-EXCEPTION.txt)).
 
 - **You keep the copyright** in what you contribute.
 - Your contribution is licensed to everyone under the same terms as the engine.

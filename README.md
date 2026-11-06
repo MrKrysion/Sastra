@@ -1,22 +1,22 @@
 <div align="center">
   <a href="https://www.sastra.dev">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://www.sastra.dev/assets/wordmark-white.png">
-      <source media="(prefers-color-scheme: light)" srcset="https://www.sastra.dev/assets/wordmark-black.png">
-      <img alt="Sastra" src="https://www.sastra.dev/assets/wordmark-black.png" width="350">
+      <source media="(prefers-color-scheme: dark)" srcset="docs/brand/wordmark-white.svg">
+      <source media="(prefers-color-scheme: light)" srcset="docs/brand/wordmark-black.svg">
+      <img alt="Sastra™" src="docs/brand/wordmark-black.svg" width="350">
     </picture>
   </a>
-  <p><strong>An easy and lightweight web visual novel engine.</strong></p>
+  <p><strong>A lightweight web visual novel engine.</strong></p>
   <p>
     <a href="https://www.sastra.dev">Website</a> •
     <a href="https://www.sastra.dev/docs/">Documentation</a> •
     <a href="https://www.sastra.dev/download">Download</a> •
-    <a href="https://www.sastra.dev/changelog">Changelog</a> •
+    <a href="https://github.com/MrKrysion/Sastra/releases">Releases</a> •
     <a href="https://www.sastra.dev/extras">Extras</a>
   </p>
 </div>
 
-Sastra is a visual novel engine that runs in the browser. The whole engine is one file, `index.html`, with no build step and no dependencies. You write your story in YAML, drop your art and audio into folders, and open it in a browser.
+Sastra™ is a visual novel engine that runs in the browser. The whole engine is one file, `index.html`, with no build step and no dependencies. You write your story in YAML, drop your art and audio into folders, and open it in a browser.
 
 ```yaml
 - bg: "backgrounds/platform.webp"
@@ -56,11 +56,10 @@ This is the engine's source. To make a game, use the release download above: it 
 | `plugins/` | The official [plugins](plugins/README.md): the Screens plugin and the Google Analytics plugin. |
 | `skins/` | The official [skins](skins/README.md), and a blank starter skin to copy. |
 | `docs/ARCHITECTURE.md` | How the engine is put together. Read it before changing the code. |
-| `CHANGELOG.md` | Every release. |
 | `LICENSE` | The GNU GPL v3. |
-| `LICENSE-EXCEPTION.txt` | The Game Data & Asset Exception, which keeps your games yours. |
+| `GAME-ASSET-EXCEPTION.txt` | The Game Data & Asset Exception, which keeps your games yours. |
 | `ASSETS-LICENSE.txt` | What the GPL does not cover: the logo and the skin previews. |
-| `THIRD-PARTY-NOTICES.md` | The licences of the code and icons bundled in the engine. |
+| `docs/THIRD-PARTY-NOTICES.md` | The licences of the code and icons bundled in the engine. |
 
 ## Features
 
@@ -85,11 +84,11 @@ Everything is at **[sastra.dev/docs](https://www.sastra.dev/docs/)**, written fo
 
 ## Reporting problems
 
-Found a bug or have an idea? [Open an issue](https://github.com/MrKrysion/Sastra/issues/new/choose). See [CONTRIBUTING.md](CONTRIBUTING.md) before sending code.
+Found a bug or have an idea? [Open an issue](https://github.com/MrKrysion/Sastra/issues/new/choose). See [CONTRIBUTING.md](.github/CONTRIBUTING.md) before sending code.
 
 ## Licence
 
-The **engine** (`index.html`) is licensed under the **GNU GPL v3** with a **Game Data & Asset Exception**: your story, art, music, and characters stay yours, including for commercial games. If you modify the engine itself and distribute it, the modified engine must stay GPL. Full text in [`LICENSE`](LICENSE) and [`LICENSE-EXCEPTION.txt`](LICENSE-EXCEPTION.txt); plain-English summary at [sastra.dev/license](https://www.sastra.dev/license).
+The **engine** (`index.html`) is licensed under the **GNU GPL v3** with a **Game Data & Asset Exception**: your story, art, music, and characters stay yours, including for commercial games. If you modify the engine itself and distribute it, the modified engine must stay GPL. Full text in [`LICENSE`](LICENSE) and [`GAME-ASSET-EXCEPTION.txt`](GAME-ASSET-EXCEPTION.txt); plain-English summary at [sastra.dev/license](https://www.sastra.dev/license).
 
 Two things are **not** covered by the GPL, and [`ASSETS-LICENSE.txt`](ASSETS-LICENSE.txt) spells out both:
 
