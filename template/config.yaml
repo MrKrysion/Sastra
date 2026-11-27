@@ -17,6 +17,7 @@ settings:
   enableTypewriter: true
   typewriterSpeed: 30
   enableCheckpoints: true
+  lockChapters: true
   allowHoldToSkip: false
 
 theme:
