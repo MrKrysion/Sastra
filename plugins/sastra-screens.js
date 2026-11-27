@@ -110,10 +110,10 @@ You should have received a copy of the GNU General Public License along with thi
 	SASTRA.plugin({
 		name: 'screens',
 		title: 'Interactive Screens',
-		version: '1.1.1',
+		version: '1.1.2',
 		description: 'Hand the story over to an interactive page for a moment: a phone or computer desktop to explore, a puzzle, a minigame.',
 		author: 'Ken Nisaka',
-		url: 'https://www.sastra.dev/docs/#screens',
+		url: 'https://www.sastra.dev/docs/screens',
 		requires: '2.0',
 
 		setup(sastra) {
