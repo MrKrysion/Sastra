@@ -13,6 +13,19 @@
     "modifiers": []
   },
   {
+    "id": "checker",
+    "file": "sastra-checker.js",
+    "name": "checker",
+    "title": "Story Checker",
+    "version": "1.0.0",
+    "description": "Plays through every path of a chapter and lists what needs fixing: mistakes, missing files, endings no path reaches, options that never show. Open a chapter with ?check on your own computer.",
+    "requires": "2.1",
+    "author": "Ken Nisaka",
+    "url": "https://www.sastra.dev/docs/checker",
+    "events": [],
+    "modifiers": []
+  },
+  {
     "id": "screens",
     "file": "sastra-screens.js",
     "name": "screens",
