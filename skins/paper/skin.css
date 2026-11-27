@@ -254,6 +254,12 @@ body[data-skin-crooked-plates="false"] :is(.avatar, .conv-avatar) { rotate: none
 
 .chapter-progress { display: none; }
 
+/* One-chapter menu: the status is a line of italics under the synopsis, like a contents entry. */
+.menu-status {
+	font-style: italic;
+	color: var(--color-accent);
+}
+
 @media (hover: hover) {
 	.chapter-button:hover {
 		background: var(--soft);
