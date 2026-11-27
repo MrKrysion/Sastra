@@ -11,6 +11,23 @@
 		"typewriterEnabled": "Typewriter effect enabled",
 		"typewriterDisabled": "Typewriter effect disabled",
 		"volume": "Volume",
+		"masterVolume": "Master volume",
+		"text": "Text",
+		"typewriter": "Typewriter effect",
+		"textSpeed": "Text speed",
+		"textSize": "Text size",
+		"sizeSmall": "Small",
+		"sizeNormal": "Normal",
+		"sizeLarge": "Large",
+		"sizeHuge": "Huge",
+		"dialogueBox": "Dialogue box",
+		"boxSolid": "Solid",
+		"boxNormal": "Normal",
+		"boxFaint": "Faint",
+		"boxNone": "None",
+		"music": "Music",
+		"sound": "Sound effects",
+		"voice": "Voice",
 		"muted": "Muted",
 		"mute": "Mute",
 		"unmute": "Unmute",
@@ -40,9 +57,17 @@
 		"restart": "Restart"
 	},
 	"log": {
-		"title": "Dialogue log"
+		"title": "Dialogue log",
+		"chosen": "You chose:",
+		"answered": "You answered:"
 	},
-	"credits": {},
+	"input": {
+		"confirm": "OK"
+	},
+	"chapter": {
+		"locked": "Keep playing to unlock this chapter",
+		"endings": "{found}/{total} endings"
+	},
 	"pause": {
 		"checkpoints": "Checkpoints",
 		"checkpointFallback": "Checkpoint {number}",
@@ -75,6 +100,9 @@
 		"title": "Select language",
 		"tooltip": "Language"
 	},
+	"cookies": {
+		"tooltip": "Cookie settings"
+	},
 	"errors": {
 		"networkTitle": "Network error",
 		"networkDesc": "Couldn't load the next part of the story. Check your connection and try again.",
@@ -94,8 +122,5 @@
 		"storyImage": "Story image",
 		"titleImage": "Title image",
 		"gameLogo": "Logo"
-	},
-	"cookies": {
-		"tooltip": "Cookie settings"
 	}
 }

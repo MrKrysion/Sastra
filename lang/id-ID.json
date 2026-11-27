@@ -11,6 +11,23 @@
 		"typewriterEnabled": "Efek mesin ketik aktif",
 		"typewriterDisabled": "Efek mesin ketik nonaktif",
 		"volume": "Volume",
+		"masterVolume": "Volume utama",
+		"text": "Teks",
+		"typewriter": "Efek mesin ketik",
+		"textSpeed": "Kecepatan teks",
+		"textSize": "Ukuran teks",
+		"sizeSmall": "Kecil",
+		"sizeNormal": "Normal",
+		"sizeLarge": "Besar",
+		"sizeHuge": "Sangat besar",
+		"dialogueBox": "Kotak dialog",
+		"boxSolid": "Pekat",
+		"boxNormal": "Normal",
+		"boxFaint": "Tipis",
+		"boxNone": "Tidak ada",
+		"music": "Musik",
+		"sound": "Efek suara",
+		"voice": "Suara karakter",
 		"muted": "Dibisukan",
 		"mute": "Bisukan",
 		"unmute": "Bunyikan",
@@ -40,9 +57,17 @@
 		"restart": "Mulai ulang"
 	},
 	"log": {
-		"title": "Riwayat dialog"
+		"title": "Riwayat dialog",
+		"chosen": "Pilihanmu:",
+		"answered": "Jawabanmu:"
 	},
-	"credits": {},
+	"input": {
+		"confirm": "OK"
+	},
+	"chapter": {
+		"locked": "Terus bermain untuk membuka bab ini",
+		"endings": "{found}/{total} ending"
+	},
 	"pause": {
 		"checkpoints": "Titik simpan",
 		"checkpointFallback": "Titik simpan {number}",
@@ -75,6 +100,9 @@
 		"title": "Pilih bahasa",
 		"tooltip": "Bahasa"
 	},
+	"cookies": {
+		"tooltip": "Pengaturan cookie"
+	},
 	"errors": {
 		"networkTitle": "Gangguan jaringan",
 		"networkDesc": "Tidak dapat memuat bagian cerita selanjutnya. Periksa koneksimu dan coba lagi.",
@@ -94,8 +122,5 @@
 		"storyImage": "Gambar cerita",
 		"titleImage": "Gambar judul",
 		"gameLogo": "Logo game"
-	},
-	"cookies": {
-		"tooltip": "Pengaturan cookie"
 	}
 }

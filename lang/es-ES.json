@@ -11,6 +11,23 @@
 		"typewriterEnabled": "Efecto de máquina de escribir activado",
 		"typewriterDisabled": "Efecto de máquina de escribir desactivado",
 		"volume": "Volumen",
+		"masterVolume": "Volumen general",
+		"text": "Texto",
+		"typewriter": "Efecto de máquina de escribir",
+		"textSpeed": "Velocidad del texto",
+		"textSize": "Tamaño del texto",
+		"sizeSmall": "Pequeño",
+		"sizeNormal": "Normal",
+		"sizeLarge": "Grande",
+		"sizeHuge": "Muy grande",
+		"dialogueBox": "Cuadro de texto",
+		"boxSolid": "Opaco",
+		"boxNormal": "Normal",
+		"boxFaint": "Tenue",
+		"boxNone": "Ninguno",
+		"music": "Música",
+		"sound": "Efectos de sonido",
+		"voice": "Voces",
 		"muted": "Silenciado",
 		"mute": "Silenciar",
 		"unmute": "Activar sonido",
@@ -40,9 +57,17 @@
 		"restart": "Reiniciar"
 	},
 	"log": {
-		"title": "Historial de diálogos"
+		"title": "Historial de diálogos",
+		"chosen": "Tu elección:",
+		"answered": "Tu respuesta:"
 	},
-	"credits": {},
+	"input": {
+		"confirm": "Aceptar"
+	},
+	"chapter": {
+		"locked": "Sigue jugando para desbloquear este capítulo",
+		"endings": "{found}/{total} finales"
+	},
 	"pause": {
 		"checkpoints": "Puntos de control",
 		"checkpointFallback": "Punto de control {number}",
@@ -75,6 +100,9 @@
 		"title": "Seleccionar idioma",
 		"tooltip": "Idioma"
 	},
+	"cookies": {
+		"tooltip": "Ajustes de cookies"
+	},
 	"errors": {
 		"networkTitle": "Error de red",
 		"networkDesc": "No se ha podido cargar la siguiente parte de la historia. Comprueba tu conexión y vuelve a intentarlo.",
@@ -94,8 +122,5 @@
 		"storyImage": "Imagen de la historia",
 		"titleImage": "Imagen del título",
 		"gameLogo": "Logotipo del juego"
-	},
-	"cookies": {
-		"tooltip": "Ajustes de cookies"
 	}
 }

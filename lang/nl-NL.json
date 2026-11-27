@@ -11,6 +11,23 @@
 		"typewriterEnabled": "Typemachine-effect ingeschakeld",
 		"typewriterDisabled": "Typemachine-effect uitgeschakeld",
 		"volume": "Volume",
+		"masterVolume": "Hoofdvolume",
+		"text": "Tekst",
+		"typewriter": "Typemachine-effect",
+		"textSpeed": "Tekstsnelheid",
+		"textSize": "Tekstgrootte",
+		"sizeSmall": "Klein",
+		"sizeNormal": "Normaal",
+		"sizeLarge": "Groot",
+		"sizeHuge": "Zeer groot",
+		"dialogueBox": "Tekstvak",
+		"boxSolid": "Dekkend",
+		"boxNormal": "Normaal",
+		"boxFaint": "Licht",
+		"boxNone": "Geen",
+		"music": "Muziek",
+		"sound": "Geluidseffecten",
+		"voice": "Stemmen",
 		"muted": "Geluid uit",
 		"mute": "Geluid uitzetten",
 		"unmute": "Geluid aanzetten",
@@ -40,9 +57,17 @@
 		"restart": "Opnieuw beginnen"
 	},
 	"log": {
-		"title": "Eerdere dialogen"
+		"title": "Eerdere dialogen",
+		"chosen": "Jouw keuze:",
+		"answered": "Jouw antwoord:"
 	},
-	"credits": {},
+	"input": {
+		"confirm": "OK"
+	},
+	"chapter": {
+		"locked": "Speel verder om dit hoofdstuk te ontgrendelen",
+		"endings": "{found}/{total} eindes"
+	},
 	"pause": {
 		"checkpoints": "Checkpoints",
 		"checkpointFallback": "Checkpoint {number}",
@@ -75,6 +100,9 @@
 		"title": "Selecteer taal",
 		"tooltip": "Taal"
 	},
+	"cookies": {
+		"tooltip": "Cookie-instellingen"
+	},
 	"errors": {
 		"networkTitle": "Netwerkfout",
 		"networkDesc": "Kon het volgende deel van het verhaal niet laden. Controleer je verbinding en probeer het opnieuw.",
@@ -94,8 +122,5 @@
 		"storyImage": "Verhaalafbeelding",
 		"titleImage": "Titelafbeelding",
 		"gameLogo": "Gamelogo"
-	},
-	"cookies": {
-		"tooltip": "Cookie-instellingen"
 	}
 }

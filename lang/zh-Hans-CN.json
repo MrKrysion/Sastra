@@ -11,6 +11,23 @@
 		"typewriterEnabled": "打字机效果已开启",
 		"typewriterDisabled": "打字机效果已关闭",
 		"volume": "音量",
+		"masterVolume": "主音量",
+		"text": "文字",
+		"typewriter": "打字机效果",
+		"textSpeed": "文字速度",
+		"textSize": "文字大小",
+		"sizeSmall": "小",
+		"sizeNormal": "标准",
+		"sizeLarge": "大",
+		"sizeHuge": "超大",
+		"dialogueBox": "文本框",
+		"boxSolid": "不透明",
+		"boxNormal": "标准",
+		"boxFaint": "较淡",
+		"boxNone": "无",
+		"music": "音乐",
+		"sound": "音效",
+		"voice": "语音",
 		"muted": "已静音",
 		"mute": "静音",
 		"unmute": "取消静音",
@@ -40,9 +57,17 @@
 		"restart": "重新开始"
 	},
 	"log": {
-		"title": "对话记录"
+		"title": "对话记录",
+		"chosen": "您的选择：",
+		"answered": "您的回答："
 	},
-	"credits": {},
+	"input": {
+		"confirm": "确定"
+	},
+	"chapter": {
+		"locked": "继续游玩即可解锁本章",
+		"endings": "结局 {found}/{total}"
+	},
 	"pause": {
 		"checkpoints": "存档点",
 		"checkpointFallback": "存档点 {number}",
@@ -75,6 +100,9 @@
 		"title": "选择语言",
 		"tooltip": "语言"
 	},
+	"cookies": {
+		"tooltip": "Cookie 设置"
+	},
 	"errors": {
 		"networkTitle": "网络错误",
 		"networkDesc": "无法加载故事的下一部分。请检查您的网络连接并重试。",
@@ -94,8 +122,5 @@
 		"storyImage": "故事插图",
 		"titleImage": "标题图片",
 		"gameLogo": "游戏标志"
-	},
-	"cookies": {
-		"tooltip": "Cookie 设置"
 	}
 }

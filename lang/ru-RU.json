@@ -11,6 +11,23 @@
 		"typewriterEnabled": "Эффект пишущей машинки включен",
 		"typewriterDisabled": "Эффект пишущей машинки выключен",
 		"volume": "Громкость",
+		"masterVolume": "Общая громкость",
+		"text": "Текст",
+		"typewriter": "Эффект пишущей машинки",
+		"textSpeed": "Скорость текста",
+		"textSize": "Размер текста",
+		"sizeSmall": "Мелкий",
+		"sizeNormal": "Обычный",
+		"sizeLarge": "Крупный",
+		"sizeHuge": "Огромный",
+		"dialogueBox": "Текстовое окно",
+		"boxSolid": "Плотное",
+		"boxNormal": "Обычное",
+		"boxFaint": "Бледное",
+		"boxNone": "Нет",
+		"music": "Музыка",
+		"sound": "Звуковые эффекты",
+		"voice": "Озвучка",
 		"muted": "Без звука",
 		"mute": "Отключить звук",
 		"unmute": "Включить звук",
@@ -40,9 +57,17 @@
 		"restart": "Начать сначала"
 	},
 	"log": {
-		"title": "История диалогов"
+		"title": "История диалогов",
+		"chosen": "Ваш выбор:",
+		"answered": "Ваш ответ:"
 	},
-	"credits": {},
+	"input": {
+		"confirm": "Готово"
+	},
+	"chapter": {
+		"locked": "Продолжайте играть, чтобы открыть эту главу",
+		"endings": "Концовки: {found}/{total}"
+	},
 	"pause": {
 		"checkpoints": "Контрольные точки",
 		"checkpointFallback": "Контрольная точка {number}",
@@ -75,6 +100,9 @@
 		"title": "Выберите язык",
 		"tooltip": "Язык"
 	},
+	"cookies": {
+		"tooltip": "Настройки файлов cookie"
+	},
 	"errors": {
 		"networkTitle": "Ошибка сети",
 		"networkDesc": "Не удалось загрузить следующую часть истории. Проверьте подключение к сети и повторите попытку.",
@@ -94,8 +122,5 @@
 		"storyImage": "Иллюстрация",
 		"titleImage": "Заставка",
 		"gameLogo": "Логотип"
-	},
-	"cookies": {
-		"tooltip": "Настройки файлов cookie"
 	}
 }
