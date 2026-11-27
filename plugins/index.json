@@ -1,0 +1,33 @@
+[
+  {
+    "id": "analytics",
+    "file": "sastra-analytics.js",
+    "name": "analytics",
+    "title": "Google Analytics",
+    "version": "2.0.2",
+    "description": "See how players find and play your game, with Google Analytics.",
+    "requires": "2.0",
+    "author": "Ken Nisaka",
+    "url": "https://www.sastra.dev/docs/analytics",
+    "events": [],
+    "modifiers": []
+  },
+  {
+    "id": "screens",
+    "file": "sastra-screens.js",
+    "name": "screens",
+    "title": "Interactive Screens",
+    "version": "1.1.2",
+    "description": "Hand the story over to an interactive page for a moment: a phone or computer desktop to explore, a puzzle, a minigame.",
+    "requires": "2.0",
+    "author": "Ken Nisaka",
+    "url": "https://www.sastra.dev/docs/screens",
+    "events": [
+      {
+        "key": "screen",
+        "label": ""
+      }
+    ],
+    "modifiers": []
+  }
+]

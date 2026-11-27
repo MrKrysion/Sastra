@@ -230,10 +230,10 @@ You should have received a copy of the GNU General Public License along with thi
 	SASTRA.plugin({
 		name: 'analytics',
 		title: 'Google Analytics',
-		version: '2.0.1',
+		version: '2.0.2',
 		description: 'See how players find and play your game, with Google Analytics.',
 		author: 'Ken Nisaka',
-		url: 'https://www.sastra.dev/docs/#analytics',
+		url: 'https://www.sastra.dev/docs/analytics',
 		requires: '2.0',
 		setup(api) {
 			overlay = api.overlay();
