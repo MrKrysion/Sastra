@@ -1,11 +1,6 @@
 <div align="center">
-  <a href="https://www.sastra.dev">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="docs/brand/wordmark-white.svg">
-      <source media="(prefers-color-scheme: light)" srcset="docs/brand/wordmark-black.svg">
-      <img alt="Sastra™" src="docs/brand/wordmark-black.svg" width="350">
-    </picture>
-  </a>
+  <img alt="Sastra™" src="docs/brand/wordmark-white.svg#gh-dark-mode-only" width="350">
+  <img alt="Sastra™" src="docs/brand/wordmark-black.svg#gh-light-mode-only" width="350">
   <p><strong>A lightweight web visual novel engine.</strong></p>
   <p>
     <a href="https://www.sastra.dev">Website</a> •
