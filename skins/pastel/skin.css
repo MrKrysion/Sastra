@@ -266,6 +266,11 @@ body[data-skin-bobbing-avatars="false"] :is(.avatar, .conv-avatar:not(.dimmed)) 
 	background: repeating-linear-gradient(-45deg, var(--color-accent) 0 7px, var(--accent-hover) 7px 14px);
 }
 
+/* One-chapter menu: the status sits on the cream panel, so the bar gets a lilac track. */
+.menu-status { color: var(--color-text); font-weight: 800; }
+.menu-status .icon { color: var(--headline); }
+.menu-status .chapter-progress { background: color-mix(in srgb, var(--color-lilac) 55%, #fff); }
+
 /* Buttons: puffy, and they squash when pressed. */
 .ui-button {
 	font-weight: 800;
