@@ -6,7 +6,7 @@ The official Sastra™ skins. A skin is a folder with a `skin.css` that restyles
 skin: skins/my-skin/
 ```
 
-Skins need Sastra 2.0 or newer. Each skin has its own version, in its `skin.json`, and updates separately from the engine. What a skin can change (variables, classes, page markers, icons) is in the [skin guide](https://www.sastra.dev/docs/#skins).
+Skins need Sastra 2.0 or newer. Each skin has its own version, in its `skin.json`, and updates separately from the engine. What a skin can change (variables, classes, page markers, icons) is in the [skin guide](https://www.sastra.dev/docs/dev/skins).
 
 ## Layout
 

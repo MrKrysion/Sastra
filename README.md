@@ -42,7 +42,7 @@ Sastra™ is a visual novel engine that runs in the browser. The whole engine is
    then open `http://localhost:8000/index.html`.
 3. Edit `config.yaml` and the files in `chapters/`. Save, refresh, play.
 
-> The engine can't run from a `file://` address. Browsers block a page opened that way from loading its chapters and assets, so a local server is required. The [Getting Started](https://www.sastra.dev/docs/#getting-started) guide walks through it.
+> The engine can't run from a `file://` address. Browsers block a page opened that way from loading its chapters and assets, so a local server is required. The [Getting Started](https://www.sastra.dev/docs/getting-started#run-it-on-your-computer) guide walks through it.
 
 ## What's in this repo
 
