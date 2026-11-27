@@ -26,6 +26,40 @@
     "modifiers": []
   },
   {
+    "id": "effects",
+    "file": "sastra-effects.js",
+    "name": "effects",
+    "title": "Effects",
+    "version": "1.0.0",
+    "description": "Make words shake, wave, change colour or size, and pause; shake, flash, blur or zoom the picture, or darken its edges.",
+    "requires": "2.1",
+    "author": "Ken Nisaka",
+    "url": "https://www.sastra.dev/docs/effects",
+    "events": [
+      {
+        "key": "shake",
+        "label": "Shake the screen"
+      },
+      {
+        "key": "flash",
+        "label": "Flash the screen"
+      },
+      {
+        "key": "blur",
+        "label": "Blur the picture"
+      },
+      {
+        "key": "zoom",
+        "label": "Zoom the picture"
+      },
+      {
+        "key": "vignette",
+        "label": "Darken the edges"
+      }
+    ],
+    "modifiers": []
+  },
+  {
     "id": "screens",
     "file": "sastra-screens.js",
     "name": "screens",
