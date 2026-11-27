@@ -652,6 +652,10 @@ body[data-skin-boot-screen="false"] .start-gate .start-subtitle { font-family: v
 	background: repeating-linear-gradient(90deg, var(--color-accent) 0 7px, transparent 7px 9px);
 }
 
+/* One-chapter menu: the status reads like a list row, with the same blocks and tick. */
+.menu-status { color: var(--color-text); font-weight: 400; }
+.menu-status .icon { color: var(--color-success); }
+
 @media (hover: hover) {
 	.chapter-button:hover {
 		background: var(--color-accent);
@@ -727,6 +731,12 @@ body[data-skin-boot-screen="false"] .start-gate .start-subtitle { font-family: v
 	-webkit-mask-image: none;
 	mask-image: none;
 	max-height: min(66vh, 480px);
+}
+
+/* Choices and typed answers sit above the taskbar, which the engine doesn't know is there. */
+.choice-screen {
+	padding-top: 16px;
+	padding-bottom: calc(var(--taskbar) + 12px + var(--safe-b));
 }
 
 /* Notifications: small system windows that rise from the taskbar. Tooltips: pale yellow. */

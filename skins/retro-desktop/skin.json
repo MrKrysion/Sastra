@@ -1,7 +1,7 @@
 {
   "name": "Retro Desktop",
   "author": "Ken Nisaka",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A nineties computer: bevelled windows, a taskbar, a boot screen, and dialogue in title-barred windows.",
   "requires": "2.0",
   "colors": {
