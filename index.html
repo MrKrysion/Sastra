@@ -28,8 +28,8 @@ If you modify this Software, you may extend this exception to your version of th
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 
-    <meta name="app-version" content="2.1.0">
-    <meta name="app-version-label" content="Version 2.1.0">
+    <meta name="app-version" content="2.1.1">
+    <meta name="app-version-label" content="Version 2.1.1">
 
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -177,6 +177,7 @@ If you modify this Software, you may extend this exception to your version of th
 			--z-overlay: 3000;
 			--z-tooltip: 3100;
 			--z-error: 5000;
+			--z-story-check: 5100;
 		}
 
 		/*
@@ -1015,6 +1016,58 @@ If you modify this Software, you may extend this exception to your version of th
 		.debug-panel__note {
 			color: var(--color-muted-text);
 			font-size: .85rem;
+		}
+
+		/*
+		 * The `?check` report (testing on your own computer only). It sits above the error
+		 * screen, since a missing file raises that and the report lists those files too.
+		 * Rows wrap instead of truncating; the first meta holds the row's status icon.
+		 */
+		.modal-overlay.story-check {
+			z-index: var(--z-story-check);
+		}
+
+		.story-check .modal-body {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+		}
+
+		.story-check__summary {
+			margin: 0;
+			color: var(--ink-2);
+			line-height: 1.5;
+		}
+
+		.story-check__section {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+		}
+
+		.story-check .row {
+			padding-block: 12px;
+			border-radius: 20px;
+			cursor: default;
+		}
+
+		.story-check .row-title {
+			white-space: normal;
+			overflow: visible;
+			line-height: 1.4;
+			font-weight: 400;
+		}
+
+		.story-check .row-title b {
+			font-weight: 700;
+		}
+
+		.story-check__row--error > .row-meta:first-child {
+			color: var(--danger);
+		}
+
+		.story-check__row--ok > .row-meta:first-child {
+			color: var(--color-success);
 		}
 
 		.choice-screen--picked {
@@ -8973,7 +9026,7 @@ If you modify this Software, you may extend this exception to your version of th
 			 */
 			#handleKeydown(e) {
 				const vn = this.#vn;
-				if ('error' in document.body.dataset || e.target.closest?.(`${EDITABLE}, .plugin-overlay, .plugin-screen, .debug-panel`)) return;
+				if ('error' in document.body.dataset || e.target.closest?.(`${EDITABLE}, .plugin-overlay, .plugin-screen, .debug-panel, .story-check`)) return;
 				if (e.code === 'Tab') {
 					e.preventDefault();
 					if (!e.repeat && vn.isLoaded && !vn.isWaitingForStart) {
@@ -9066,7 +9119,7 @@ If you modify this Software, you may extend this exception to your version of th
 			 */
 			#handleClick(e) {
 				const vn = this.#vn;
-				if (e.target.closest('.plugin-overlay, .plugin-screen, .debug-panel')) return;
+				if (e.target.closest('.plugin-overlay, .plugin-screen, .debug-panel, .story-check')) return;
 				const actionEl = e.target.closest('[data-action]');
 				if ('error' in document.body.dataset) return actionEl && this.runAction(actionEl.dataset.action, actionEl);
 
@@ -9890,6 +9943,278 @@ If you modify this Software, you may extend this exception to your version of th
 
 			#note(text) {
 				this.#root.querySelector('.debug-panel__note').textContent = text;
+			}
+		}
+
+		/**
+		 * The `?check` report, a testing aid that only exists on your own computer
+		 * (isDevHost), built when asked for and English only, like the debug panel. It plays
+		 * the open chapter breadth first over every place the story can be in (a scene with
+		 * its variables and the labels passed), following the same rules as BranchManager,
+		 * so a change to how `if:`, `goto:`, `set:`, labels or endings behave must be made
+		 * here too. It then lists the compile problems, missing files, endings no path
+		 * reaches, options that never show, events never reached, loops with no way out,
+		 * choices some paths skip, and sound tips. `input:` answers stay at their starting
+		 * values. The input manager ignores keys and clicks inside it, so the report
+		 * handles its own Escape and close button, even over the error screen.
+		 */
+		class StoryChecker {
+			/**
+			 * Places followed before giving up on a chapter with too many paths, and places
+			 * per scene: a loop that adds to a variable each time round would never end, so
+			 * past this the loop isn't followed further.
+			 */
+			static STATE_LIMIT = 50000;
+			static PLACE_LIMIT = 64;
+			/**
+			 * The most endings seenEnding() may ask about for every mix of them reached and
+			 * not to be tried (2^4 plays); past this, only none and all.
+			 */
+			static ENDING_MIX_LIMIT = 4;
+			static #CHANNELS = ['music', 'sound', 'voice'];
+			static #ICONS = { ok: 'success', warning: 'warning', error: 'error', tip: 'info' };
+			#vn;
+			#root;
+
+			constructor(vn) {
+				this.#vn = vn;
+				this.#root = document.createElement('div');
+				document.body.appendChild(this.#root);
+				const onKey = (e) => {
+					if (e.key !== 'Escape' || !this.#root.firstElementChild?.classList.contains('active')) return;
+					e.stopPropagation();
+					e.preventDefault();
+					this.#close();
+				};
+				document.addEventListener('keydown', onKey, true);
+				this.#root.addEventListener('click', (e) => {
+					if (e.target.classList.contains('story-check') || e.target.closest('.close-button')) this.#close();
+				});
+			}
+
+			/**
+			 * Checks the open chapter and shows the report. `missing` is the promise of the
+			 * chapter's missing files that the loader already started.
+			 */
+			async run(missing) {
+				const vn = this.#vn;
+				const chapter = vn.chapterFile;
+				const scenes = vn.script;
+				const whens = scenes.flatMap(scene => [scene.when, ...(scene.options || []).map(option => option.when)]);
+				const asked = [...new Set(whens.flatMap(when => when?.endings || []).map(({ id, file }) => `${file ?? ''}:${id}`))];
+				const every = asked.length <= StoryChecker.ENDING_MIX_LIMIT;
+				const mixes = every ? Array.from({ length: 2 ** asked.length }, (_, mask) => asked.filter((key, bit) => mask & (1 << bit))) : [[], asked];
+				const seen = mixes.map(mix => this.#explore(scenes, { ...scenes.vars }, (id, file) => mix.includes(`${file ?? ''}:${id}`))).reduce(StoryChecker.#merge);
+				const files = await missing;
+				if (vn.chapterFile !== chapter) return;
+				const notes = [];
+				if (seen.truncated) notes.push(`The chapter has too many paths to follow them all (it stopped after ${seen.places.toLocaleString('id-ID')} places), so endings, options and events may be reached that it didn't see.`);
+				else if (seen.capped) notes.push('Some loops change a variable each time round, so the checker followed them a limited number of times.');
+				if (asked.length) notes.push(every ? 'seenEnding() was tried with every mix of endings reached before.' : `seenEnding() asks about ${asked.length} endings, so it was tried only with none of them reached before and with all of them.`);
+				if (scenes.some(scene => scene.type === 'input')) notes.push('Answers to input: were left at their starting values.');
+				this.#show(this.#findings(scenes, seen, vn.chapterProblems(), files), notes);
+			}
+
+			/**
+			 * Plays the chapter from the top over every place it can be in: a scene whose `if:`
+			 * fails is skipped (a skipped choice carries on after its options), `goto:` jumps,
+			 * `set:` and an option's `set:` change the variables, a label is remembered for
+			 * `seen()`, and `end:` finishes. Returns what it saw, and each step into a loop it
+			 * can never leave (the scene, and the option when that step is a choice). `ended`
+			 * answers seenEnding().
+			 */
+			#explore(scenes, start, ended) {
+				const ids = new Map();
+				const where = [];
+				const edges = [];
+				const picks = [];
+				const finishes = new Set();
+				const reached = new Set();
+				const offered = new Set();
+				const endings = new Set();
+				const skipped = new Set();
+				const queue = [];
+				const perScene = new Map();
+				let truncated = false;
+				let capped = false;
+				const visit = (state, from, position) => {
+					const key = `${state.i}|${JSON.stringify(state.vars)}|${[...state.seen].sort().join(',')}`;
+					let id = ids.get(key);
+					if (id === undefined) {
+						// A place not followed can't be judged, so the one leading to it counts as
+						// able to finish: no false "loop with no way out".
+						const count = perScene.get(state.i) ?? 0;
+						if (count >= StoryChecker.PLACE_LIMIT) { capped = true; if (from !== undefined) finishes.add(from); return; }
+						if (ids.size >= StoryChecker.STATE_LIMIT) { truncated = true; return; }
+						perScene.set(state.i, count + 1);
+						id = ids.size;
+						ids.set(key, id);
+						where[id] = state.i;
+						edges[id] = [];
+						picks[id] = [];
+						queue.push([id, state]);
+					}
+					if (from !== undefined) { edges[from].push(id); picks[from].push(position); }
+				};
+				const apply = (vars, ops = []) => {
+					const next = { ...vars };
+					for (const op of ops) next[op.name] = 'add' in op ? next[op.name] + op.add : op.value;
+					return next;
+				};
+				visit({ i: 0, vars: start, seen: new Set() });
+				for (let q = 0; q < queue.length; q++) {
+					const [id, { i, vars, seen }] = queue[q];
+					const scene = scenes[i];
+					const go = (index, nextVars = vars, nextSeen = seen, position) => visit({ i: index, vars: nextVars, seen: nextSeen }, id, position);
+					if (!scene) { finishes.add(id); continue; }
+					const shown = !scene.when || scene.when.test(vars, seen, ended);
+					const options = scene.type === 'choice' ? scene.options.map((option, position) => ({ option, position })).filter(({ option }) => !option.when || option.when.test(vars, seen, ended)) : [];
+					if (!shown || (scene.type === 'choice' && !options.length)) {
+						if (scene.type === 'choice' && shown) skipped.add(i);
+						go(scene.type === 'choice' ? scene.afterIndex : i + 1);
+						continue;
+					}
+					reached.add(i);
+					if (scene.type === 'end') { endings.add(i); finishes.add(id); }
+					else if (scene.type === 'jump') go(scene.target);
+					else if (scene.type === 'set') go(i + 1, apply(vars, scene.ops));
+					else if (scene.type === 'label') go(i + 1, vars, scene.name ? new Set([...seen, scene.name]) : seen);
+					else if (scene.type === 'choice') {
+						for (const { option, position } of options) {
+							offered.add(`${i}:${position}`);
+							go(option.target, apply(vars, option.ops), seen, position);
+						}
+					} else go(i + 1);
+				}
+				const canFinish = new Set(finishes);
+				const before = edges.map(() => []);
+				edges.forEach((targets, from) => targets.forEach(to => before[to].push(from)));
+				const back = [...finishes];
+				while (back.length) for (const from of before[back.pop()]) if (!canFinish.has(from)) { canFinish.add(from); back.push(from); }
+				const stuck = new Map();
+				if (!truncated) {
+					if (!canFinish.has(0)) stuck.set('start', { i: 0 });
+					edges.forEach((targets, from) => {
+						if (!canFinish.has(from)) return;
+						targets.forEach((to, k) => { if (!canFinish.has(to)) stuck.set(`${where[from]}:${picks[from][k]}`, { i: where[from], position: picks[from][k] }); });
+					});
+				}
+				return { reached, offered, endings, skipped, stuck: [...stuck.values()], truncated, capped, places: ids.size };
+			}
+
+			/**
+			 * What two plays saw together: a chapter using seenEnding() is played once per
+			 * mix of endings reached before, and what any play saw counts.
+			 */
+			static #merge(a, b) {
+				const union = (key) => new Set([...a[key], ...b[key]]);
+				return {
+					reached: union('reached'),
+					offered: union('offered'),
+					endings: union('endings'),
+					skipped: union('skipped'),
+					stuck: [...new Map([...a.stuck, ...b.stuck].map(place => [`${place.i}:${place.position}`, place])).values()],
+					truncated: a.truncated || b.truncated,
+					capped: a.capped || b.capped,
+					places: a.places + b.places
+				};
+			}
+
+			/**
+			 * The report's sections, [title, rows], each row `{ level, text, place }` with
+			 * `text` as HTML. Empty sections are left out.
+			 */
+			#findings(scenes, seen, problems, missing) {
+				const lines = ScriptCompiler.eventLines(this.#vn.chapterSource);
+				const where = (event) => event ? `Event ${event}${lines[event - 1] ? `, line ${lines[event - 1]}` : ''}` : '';
+				const plain = (html) => escapeHtml(stripHtml(html).trim());
+				const sections = [];
+				const add = (title, rows) => { if (rows.length) sections.push([title, rows]); };
+				const flagged = new Set(problems.map(problem => problem.event));
+				add('Mistakes in the file', problems.map(problem => ({ level: problem.severity, text: escapeHtml(problem.message), place: where(problem.event) })));
+				add('Missing files', missing.map(src => ({ level: 'error', text: `<b>${escapeHtml(src)}</b> isn't in the game folder.` })));
+				add('Endings', scenes.flatMap((scene, i) => {
+					if (scene.type !== 'end') return [];
+					const name = `<b>${plain(scene.title) || 'An ending'}</b>${scene.id ? ` (${escapeHtml(scene.id)})` : ''}`;
+					return seen.endings.has(i)
+						? { level: 'ok', text: `${name} can be reached.`, place: where(scene.eventNumber) }
+						: { level: 'warning', text: `${name} is never reached: no path through the choices and if: tests leads there.`, place: where(scene.eventNumber) };
+				}));
+				add('Options', scenes.flatMap((scene, i) => scene.type !== 'choice' || !seen.reached.has(i) ? [] : scene.options.flatMap((option, position) => seen.offered.has(`${i}:${position}`) ? []
+					: { level: 'warning', text: `The option <b>${plain(option.text)}</b> never shows: its if: is false on every path.`, place: where(scene.eventNumber) })));
+				const never = new Map();
+				if (!seen.truncated) scenes.forEach((scene, i) => {
+					const shows = !scene.isPassive || ['background', 'audio', 'sprite', 'sprites'].includes(scene.type);
+					if (shows && scene.type !== 'chapter' && scene.type !== 'end' && !seen.reached.has(i) && !flagged.has(scene.eventNumber) && !never.has(scene.eventNumber)) never.set(scene.eventNumber, { level: 'warning', text: 'This event is never reached: the choices and if: tests before it never let the story get there.', place: where(scene.eventNumber) });
+				});
+				add('Events never reached', [...never.values()]);
+				add('Loops', seen.stuck.map(({ i, position }) => ({
+					level: 'error',
+					text: position !== undefined
+						? `Picking <b>${plain(scenes[i].options[position].text)}</b> leads into a loop with no way out: the story can never finish after it.`
+						: 'After this, the story goes round a loop with no way out and can never finish.',
+					place: where(scenes[i].eventNumber)
+				})));
+				add('Choices skipped', [...seen.skipped].map(i => ({ level: 'warning', text: 'On some paths none of this choice\'s options can show, so the story carries on after it without asking.', place: where(scenes[i].eventNumber) })));
+				add('Sound', this.#sound(scenes, where));
+				return sections;
+			}
+
+			/**
+			 * Rows for `play:` events. One whose id is a channel name would be stopped by
+			 * `stop: music` and the like. In a chapter that mixes `play:` with `music:`,
+			 * `sound:` or `voice:` the player has channel sliders, which `play:` without
+			 * `channel:` doesn't follow, so that chapter gets a tip.
+			 */
+			#sound(scenes, where) {
+				const plays = scenes.filter(scene => scene.type === 'audio' && scene.action === 'play');
+				const clashes = plays.filter(scene => !scene.channel && StoryChecker.#CHANNELS.includes(scene.id)).map(scene => ({
+					level: 'warning',
+					text: `This play: has the id <b>${escapeHtml(scene.id)}</b>, the name of a sound channel, so <b>stop: ${escapeHtml(scene.id)}</b> also stops everything on that channel. Give it another id.`,
+					place: where(scene.eventNumber)
+				}));
+				const loose = plays.filter(scene => !scene.channel);
+				if (!loose.length || !plays.some(scene => scene.channel)) return clashes;
+				const list = (items) => {
+					const numbers = items.map(scene => scene.eventNumber);
+					return numbers.length <= 5 ? numbers.join(', ') : `${numbers.slice(0, 4).join(', ')} and ${numbers.length - 4} more`;
+				};
+				const loops = loose.filter(scene => scene.loop === true);
+				const once = loose.filter(scene => scene.loop !== true);
+				const tip = [
+					loops.length && `Looping ones could be <b>music:</b> (event${loops.length > 1 ? 's' : ''} ${list(loops)}).`,
+					once.length && `The others could be <b>sound:</b> (event${once.length > 1 ? 's' : ''} ${list(once)}).`
+				].filter(Boolean).join(' ');
+				return [...clashes, {
+					level: 'tip',
+					text: `${loose.length} play: event${loose.length > 1 ? 's' : ''} follow${loose.length > 1 ? '' : 's'} only the main volume, not the sliders for music, sound effects and voice. ${tip} Or add <b>channel:</b> to them. Change any stop: or volume: that names their id too.`
+				}];
+			}
+
+			#show(sections, notes) {
+				const counts = sections.flatMap(([, rows]) => rows).reduce((total, row) => ({ ...total, [row.level]: (total[row.level] || 0) + 1 }), {});
+				const clean = !counts.error && !counts.warning;
+				const count = (n, one, many) => n && `${n} ${n === 1 ? one : many}`;
+				const summary = clean ? 'No problems found.' : `${[count(counts.error, 'problem', 'problems'), count(counts.warning, 'warning', 'warnings')].filter(Boolean).join(' and ')} found.`;
+				const row = ({ level, text, place }) => `<div class="row story-check__row--${level}"><span class="row-meta"><i class="icon" data-icon="${StoryChecker.#ICONS[level]}"></i></span><span class="row-title">${text}</span>${place ? `<span class="row-meta">${place}</span>` : ''}</div>`;
+				this.#root.innerHTML = `
+					<div class="modal-overlay story-check active" role="dialog" aria-modal="true" aria-labelledby="storyCheckTitle">
+						<div class="modal-content" tabindex="-1">
+							<div class="modal-head">
+								<div class="modal-title" id="storyCheckTitle"><i class="icon" data-icon="${clean ? 'success' : 'warning'}"></i><span>Story check</span></div>
+								<button class="close-button" type="button" aria-label="Close"><i class="icon" data-icon="close"></i></button>
+							</div>
+							<div class="modal-body scrollbar">
+								<p class="story-check__summary">${[summary, ...notes].join(' ')}</p>
+								${sections.map(([title, rows]) => `<div class="story-check__section"><div class="eyebrow">${title}</div><div class="rows">${rows.map(row).join('')}</div></div>`).join('')}
+							</div>
+						</div>
+					</div>`;
+				this.#root.querySelector('.modal-content').focus();
+			}
+
+			#close() {
+				this.#root.firstElementChild?.classList.remove('active');
 			}
 		}
 
@@ -12390,7 +12715,7 @@ If you modify this Software, you may extend this exception to your version of th
 			 * computer), config, a state snapshot (with the variables of a branching chapter),
 			 * on and off for happenings, progress (get, set, reset, passed), vars (get, and set,
 			 * which keeps a variable's kind), story (a read-only view of the open chapter, for
-			 * tools such as the story checker), url (the resolved asset URL), picture (the
+			 * tools that read the story), url (the resolved asset URL), picture (the
 			 * element holding the backgrounds and sprites, for effects that move or filter the
 			 * scene and not the buttons), button, overlay, screen, toast, t and translate (the
 			 * plugin's own strings) and error.
@@ -12437,7 +12762,7 @@ If you modify this Software, you may extend this exception to your version of th
 						vars: () => ({ ...vn.script.vars }),
 						next: (index) => vn.script.flow ? flowSuccessors(vn.script, index) : index + 1 < vn.script.length ? [index + 1] : [],
 						lines: () => ScriptCompiler.eventLines(vn.chapterSource),
-						problems: () => vn.chapterSource ? ScriptCompiler.validate(jsyaml.load(vn.chapterSource), vn.chapterSource, `chapters/${vn.chapterFile}`, vn.controls.strict, vn.story) : [],
+						problems: () => vn.chapterProblems(),
 						missingFiles: () => vn.assets.findMissingAssets()
 					},
 					on(name, fn) {
@@ -12603,6 +12928,7 @@ If you modify this Software, you may extend this exception to your version of th
 				this.previewTrail = [];
 				this.chapterSource = '';
 				this.debug = null;
+				this.checker = null;
 				this.dialogue = new DialogueManager(this);
 				this.branch = new BranchManager(this);
 
@@ -12814,10 +13140,12 @@ If you modify this Software, you may extend this exception to your version of th
 				await this.assets.preloadInitialAssets(start?.route ?? [], start?.index ?? 0);
 				this.assets.updateWindow(start?.index ?? 0, () => this.ui.updatePauseAssets());
 
-				this.assets.findMissingAssets().then(missing => {
-					if (this.chapterFile !== chapter || !missing.length) return;
-					this.ui.showAssetError(missing);
+				const missing = this.assets.findMissingAssets();
+				missing.then(files => {
+					if (this.chapterFile !== chapter || !files.length) return;
+					this.ui.showAssetError(files);
 				});
+				if (isDevHost() && new URLSearchParams(window.location.search).has('check')) (this.checker ??= new StoryChecker(this)).run(missing);
 
 				document.querySelector('.chapter-select')?.remove();
 				updateOrientationBlocker();
@@ -12828,6 +13156,14 @@ If you modify this Software, you may extend this exception to your version of th
 					this.isLoaded = true;
 					this.ui.showStartGate();
 				}, TIMINGS.loadingHandoff);
+			}
+
+			/**
+			 * Every compile error and warning of the open chapter, as ScriptCompiler.validate
+			 * gives them (for `?check` and plugins' `story.problems()`).
+			 */
+			chapterProblems() {
+				return this.chapterSource ? ScriptCompiler.validate(jsyaml.load(this.chapterSource), this.chapterSource, `chapters/${this.chapterFile}`, this.controls.strict, this.story) : [];
 			}
 
 			/**
